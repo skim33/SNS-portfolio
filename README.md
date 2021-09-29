@@ -15,10 +15,10 @@
     <br />
     <a href="https://shawn-kim-portfolio.web.app/messaging">View Demo</a>
     <br />
-    <div>Please logn with the guest email address and password shown below:</div>
+    <div style="text-align: center">Please logn with the guest email address and password shown below:</div>
     <br />
-    <div>Email: guest@guest.com</div>
-    <div>Password: 123123</div>
+    <div style="text-align: center">Email: guest@guest.com</div>
+    <div style="text-align: center">Password: 123123</div>
   </p>
 </p>
 
