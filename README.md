@@ -17,8 +17,8 @@
     <br />
     <div style="text-align: center">Please logn with the guest email address and password shown below:</div>
     <br />
-    <div style="text-align: center">Email: guest@guest.com</div>
-    <div style="text-align: center">Password: 123123</div>
+    <div align="center">Email: guest@guest.com</div>
+    <div align="center">Password: 123123</div>
   </p>
 </p>
 
