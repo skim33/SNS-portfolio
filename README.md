@@ -15,10 +15,11 @@
     <br />
     <a href="https://shawn-kim-portfolio.web.app/messaging">View Demo</a>
     <br />
-    <div style="text-align: center">Please logn with the guest email address and password shown below:</div>
+    <div align="center">Please logn with the guest email address and password shown below:</div>
     <br />
     <div align="center">Email: guest@guest.com</div>
     <div align="center">Password: 123123</div>
+    <br />
   </p>
 </p>
 
@@ -52,7 +53,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://shawn-kim-portfolio.web.app/messaging)
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -161,3 +162,8 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 - [Sticky Kit](http://leafo.net/sticky-kit)
 - [JVectorMap](http://jvectormap.com)
 - [Font Awesome](https://fontawesome.com)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[product-screenshot]: src/assets/screen_shot.png
