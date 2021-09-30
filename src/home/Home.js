@@ -72,7 +72,7 @@ class Home extends React.Component {
           </Tooltip>
 
           <Tooltip 
-            title={<div>Google Maps Travel Companion Application<br />・ Currently not working due to the consumption of all the allocated API calls under the subscription to the Travel Advisor API<br /><br />・ React - Frontend<br />&nbsp;&nbsp;- React Chat Engine - Serverless chat API<br />・ JavaScript<br />&nbsp;&nbsp;- Library<br />&nbsp;&nbsp;&nbsp;&nbsp;・ Axios<br />・ APIs<br />&nbsp;&nbsp;- Travel Advisor API<br />&nbsp;&nbsp;- Open Weather Map API</div>} 
+            title={<div>Google Maps Travel Companion Application<br />・ Currently not working due to the consumption of all the allocated API calls under the subscription to the Travel Advisor API<br /><br />・ React - Frontend<br />・ JavaScript<br />&nbsp;&nbsp;- Library<br />&nbsp;&nbsp;&nbsp;&nbsp;・ Axios<br />・ APIs<br />&nbsp;&nbsp;- Travel Advisor API<br />&nbsp;&nbsp;- Open Weather Map API</div>} 
             placement="right-end">
               <li className="link" onClick={() => this.togglePopup("https://travel-advisor-api.netlify.app/", "Trip Advisor")}>Trip Advisor</li>
           </Tooltip>
