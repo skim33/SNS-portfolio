@@ -1,4 +1,4 @@
-import { Avatar } from "@material-ui/core"
+import { Avatar, Tooltip, ClickAwayListener, Button } from "@material-ui/core"
 import React, { forwardRef, useState, useEffect } from "react"
 import "./Post.css"
 import InputOption from "./InputOption"
@@ -10,7 +10,6 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined"
 import { db } from "../firebase"
 import { useSelector } from "react-redux"
 import { selectUid } from "../features/userSlice"
-import { Tooltip, ClickAwayListener, Button } from '@material-ui/core'
 
 const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, ref ) => {
   const [postId, setPostId] = useState("");
