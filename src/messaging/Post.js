@@ -10,12 +10,22 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined"
 import { db } from "../firebase"
 import { useSelector } from "react-redux"
 import { selectUid } from "../features/userSlice"
+import { Tooltip, ClickAwayListener, Button } from '@material-ui/core'
 
 const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, ref ) => {
   const [postId, setPostId] = useState("");
   const [likesNum, setLikesNum] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const [open, setOpen] = useState(false);
   const userId = useSelector(selectUid);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  }
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  }
 
   useEffect(() => {
     db.collection("posts").where("timestamp", "==", timestamp)
@@ -105,10 +115,26 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
         <p>{message}</p>
       </div>
 
+      <br />
+
       <div className="post__buttons">
         <InputOption Icon={isLiked ? (ThumbUp) : (ThumbUpAltOutlinedIcon)} title="Like" color="gray" likesNum={likesNum} clickLikeBtn={clickLikeBtn} />
         <InputOption Icon={ChatOutlinedIcon} title="Comment" color="gray" />
-        <InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" />
+        <ClickAwayListener onClickAway={handleTooltipClose}>
+          <div>
+            <Tooltip
+              PopperProps={{disablePortal: true}}
+              onClose={handleTooltipClose}
+              open={open}
+              disableFocusListener
+              disableHoverListener
+              disableTouchListener
+              title="SSSSSS"
+            >
+              <Button style={{'margin': '0', 'padding': '0'}} onClick={handleTooltipOpen}><InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" /></Button>
+            </Tooltip>
+          </div>
+        </ClickAwayListener>
         <InputOption Icon={SendOutlinedIcon} title="Send" color="gray" />
       </div>
     </div>
