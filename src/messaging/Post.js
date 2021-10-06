@@ -1,5 +1,5 @@
 import { Avatar } from "@material-ui/core"
-import React, { forwardRef, useState, useEffect } from "react"
+import React, { forwardRef, useState, useEffect, useRef } from "react"
 import "./Post.css"
 import InputOption from "./InputOption"
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined"
@@ -10,12 +10,20 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined"
 import { db } from "../firebase"
 import { useSelector } from "react-redux"
 import { selectUid } from "../features/userSlice"
+import { useDetectOutsideClick } from './useDetectOutsideClick'
+import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, ref ) => {
   const [postId, setPostId] = useState("");
   const [likesNum, setLikesNum] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const dropdownRef = useRef(null);
+  const [showMenu, setShowMenu] = useDetectOutsideClick(dropdownRef, false);
   const userId = useSelector(selectUid);
+
+  const onClick = () => setShowMenu(!showMenu);
 
   useEffect(() => {
     db.collection("posts").where("timestamp", "==", timestamp)
@@ -110,7 +118,15 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
       <div className="post__buttons">
         <InputOption Icon={isLiked ? (ThumbUp) : (ThumbUpAltOutlinedIcon)} title="Like" color="gray" likesNum={likesNum} clickLikeBtn={clickLikeBtn} />
         <InputOption Icon={ChatOutlinedIcon} title="Comment" color="gray" />
-        <InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" />
+        <div className="menu-container">
+          <div onClick={onClick} className="menu-trigger"><InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" /></div>
+
+          <ul ref={dropdownRef} className={`menu ${showMenu ? 'active' : 'inactive'}`}>
+            <li><span　style={{'display': 'inline-block', 'verticalAlign': 'middle', 'paddingLeft': '3px'}}><FacebookIcon color="primary" /></span><a href="https://www.facebook.com/login/" target="_blank" rel="noreferrer" style={{'display': 'inline', 'verticalAlign': 'middle'}}>Facebook</a></li>
+            <li><span style={{'display': 'inline-block', 'verticalAlign': 'middle', 'paddingLeft': '3px'}}><TwitterIcon style={{'fill': "#00acee"}} /></span><a href="https://twitter.com/i/flow/login" target="_blank" rel="noreferrer" style={{'display': 'inline', 'verticalAlign': 'middle'}}>Twitter</a></li>
+            <li><span style={{'display': 'inline-block', 'verticalAlign': 'middle', 'paddingLeft': '3px'}}><LinkedInIcon style={{'fill': "#0072b1"}} /></span><a href="https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin" target="_blank" rel="noreferrer" style={{'display': 'inline', 'verticalAlign': 'middle'}}>LinkedIn</a></li>
+          </ul>
+        </div>
         <InputOption Icon={SendOutlinedIcon} title="Send" color="gray" />
       </div>
     </div>
