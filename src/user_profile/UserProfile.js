@@ -4,6 +4,8 @@ import { useSelector } from "react-redux"
 import {  selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
 import PhoneInput, {isValidPhoneNumber} from 'react-phone-number-input'
 import "react-phone-number-input/style.css";
+import ImageOne from '../assets/unlocked.jpg'
+import ImageTwo from '../assets/locked.jpg'
 import "./UserProfile.css"
 
 const UserProfile = () => {
@@ -70,21 +72,41 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="profile">
-      <div className="right-column">
-        <form onSubmit={addUser}>
-          <div>{error}</div>
-          <input placeholder={userDisplayName} type="text" readOnly/>
-          <input placeholder={userEmail} type="text" readOnly/>
-          <PhoneInput onChange={setPhoneNum} value={phoneNum} placeholder="Phone Number"/>
-          <input onChange={(e) => setHobby(e.target.value)} placeholder="Hobby" type="text"/>
-          <button type="submit">Save</button>
-        </form>
-      </div>
+    <div className="wrapper">
+      <section>
+        <div className="container">
+          <div className="user infoBx">
+            <div className="formBx">
+              <h2>Your Profile</h2>
+              <div>Name: {userData.name}</div>
+              <div>Email: {userData.email}</div>
+              <div>Phone Number: {userData.phoneNum}</div>
+              <div>Hobby: {userData.hobby}</div>
+              <a href="#">Edit</a>
+            </div>
+            <div className="imgBx"><img src={ImageTwo} alt="locked" /></div>
+          </div>
+        </div>
+      </section>
 
-      <div className="left-column">
-
-      </div>
+      <section>
+        <div className="container">
+          <div className="user editBx">
+            <div className="imgBx"><img src={ImageOne} alt="unlocked" /></div>
+            <div className="formBx">
+              <form onSubmit={addUser}>
+                <h2>Update Profile</h2>
+                <div>{error}</div>
+                <input placeholder={userDisplayName} type="text" readOnly/>
+                <input placeholder={userEmail} type="text" readOnly/>
+                <PhoneInput onChange={setPhoneNum} value={phoneNum} placeholder="Phone Number"/>
+                <input onChange={(e) => setHobby(e.target.value)} placeholder="Hobby" type="text"/>
+                <button type="submit">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
