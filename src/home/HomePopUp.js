@@ -1,17 +1,26 @@
 import React from 'react'
+import Popup from 'reactjs-popup'
 import "./HomePopUp.css"
 
-class HomePopUp extends React.Component {
-  render() {
-    return (
-      <div className='popup'>
-        <div className='popup_inner'>
-          <iframe title={this.props.title} src={this.props.url}></iframe>
-          <button onClick={this.props.closePopup}　className="closeBtn"><span>&times;</span></button>
-        </div>
+const HomePopUp = ({open, onClose, url, title}) => {
+  return (
+    <Popup open={open} closeOnDocumentClick onClose={onClose}>
+      <div className="modal">
+        <a className="close" onClick={onClose}>
+          &times;
+        </a>
+        <iframe title={title} src={url}></iframe>
       </div>
-    );
-  }
+    </Popup>
+  )
 }
 
 export default HomePopUp
+
+
+
+
+
+
+
+

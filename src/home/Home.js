@@ -10,18 +10,14 @@ class Home extends React.Component {
   constructor() {
     super();
     this.state = {
-      showPopup: false,
-      url: "",
-      title: ""
+      open: false
     };
-    this.togglePopup = this.togglePopup.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  togglePopup(link, title) {
+  closeModal() {
     this.setState({
-      showPopup: !this.state.showPopup,
-      url: link,
-      title: title
+      open: false
     });
   }
 
@@ -41,11 +37,17 @@ class Home extends React.Component {
       <div className="home__body">
         <div className="icon"><HomeIcon /></div>
         <ul ref={el => this.el = el} className="popIn">
-          <Tooltip 
-            title={<div>Responsive Personal Website<br />- Basic Website using vanilla js<br /><br />・ HTML<br />・ CSS<br />・ JavaScript<br />&nbsp;&nbsp;- Library<br />&nbsp;&nbsp;&nbsp;&nbsp;・ jQuery<br />&nbsp;&nbsp;&nbsp;&nbsp;・ Three.js<br />&nbsp;&nbsp;&nbsp;&nbsp;・ anime.js</div>} 
-            placement="right-start">
-              <li className="link" onClick={() => this.togglePopup("https://shawn-kim-website.herokuapp.com", "Shawn Kim Website")}>Shawn Kim Website</li>
-          </Tooltip>
+          <div>
+            <Tooltip 
+              title={<div>Responsive Personal Website<br />- Basic Website using vanilla js<br /><br />・ HTML<br />・ CSS<br />・ JavaScript<br />&nbsp;&nbsp;- Library<br />&nbsp;&nbsp;&nbsp;&nbsp;・ jQuery<br />&nbsp;&nbsp;&nbsp;&nbsp;・ Three.js<br />&nbsp;&nbsp;&nbsp;&nbsp;・ anime.js</div>} 
+              placement="right-start"
+            >
+                <li className="link" onClick={() => this.setState({open: !this.state.open})}>
+                  Shawn Kim Website
+                </li>
+            </Tooltip>
+            <HomePopUp open={this.state.open} onClose={this.closeModal} url="https://shawn-kim-website.herokuapp.com" title="Shawn Kim Website" />
+          </div>
           
           <Tooltip 
             title={<div>Offline PvP Chess Game<br /><br />・ React, RxJS - Frontend<br />&nbsp;&nbsp;- React DnD<br />・ JavaScript<br />&nbsp;&nbsp;- Library<br />&nbsp;&nbsp;&nbsp;&nbsp;・ Chess.js</div>} 
@@ -90,14 +92,6 @@ class Home extends React.Component {
           <li><a className="link" href="http://shawn-kim-website.herokuapp.com">Coming soon...</a></li>
           <li><a className="link" href="http://shawn-kim-website.herokuapp.com">Coming soon...</a></li>
         </ul>
-
-        {this.state.showPopup ?
-          <HomePopUp 
-            title = {this.state.title}
-            url = {this.state.url}
-            closePopup = {this.togglePopup}
-          /> : null
-        }
       </div>
     
     )
