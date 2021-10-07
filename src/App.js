@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { unstable_createMuiStrictModeTheme } from '@material-ui/core/styles';
 import Header from "./header/Header"
 import Login from "./login/Login"
 import { useDispatch, useSelector } from "react-redux"
@@ -18,6 +20,7 @@ import MessagingIndex from "./messaging/MessagingIndex"
 function App() {
   const userEmail = useSelector(selectEmail);
   const dispatch = useDispatch();
+  const theme = unstable_createMuiStrictModeTheme();
 
   useEffect(() => {
     auth.onAuthStateChanged(userAuth => {
@@ -37,29 +40,31 @@ function App() {
   });
 
   return (
-    <div className="app">
+    <ThemeProvider theme = {theme}>
+      <div className="app">
 
-      {!userEmail ? (
-        <Login />
-      ) : (
-        <BrowserRouter>
-          <Header />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
+        {!userEmail ? (
+          <Login />
+        ) : (
+          <BrowserRouter>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
 
-            <Route path="/profile">
-              <UserProfile />
-            </Route>
+              <Route path="/profile">
+                <UserProfile />
+              </Route>
 
-            <Route path="/messaging">
-              <MessagingIndex />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      )}
-    </div>
+              <Route path="/messaging">
+                <MessagingIndex />
+              </Route>
+            </Switch>
+          </BrowserRouter>
+        )}
+      </div>
+    </ThemeProvider>
   );
 }
 

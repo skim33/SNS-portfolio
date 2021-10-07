@@ -26,13 +26,17 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
   const onClick = () => setShowMenu(!showMenu);
 
   useEffect(() => {
+    let isSubscribed = true;
+    
     db.collection("posts").where("timestamp", "==", timestamp)
     .get()
     .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
+      if (isSubscribed) {
+        querySnapshot.forEach((doc) => {
           console.log(doc.id, " => ", doc.data());
           setPostId(doc.id);
-      });
+        });
+      }
     })
     .catch((error) => {
       console.log("Error getting documents: ", error);
@@ -46,26 +50,37 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
           if (change.type === "added") ++count;
           else --count;
         })
-        setLikesNum(count);
+        if (isSubscribed) {
+          setLikesNum(count);
+        }
       })
       .catch((error) => {
         console.log("Error getting length: ", error)
       })
     }
-  })
+
+    return () => isSubscribed = false;
+  });
 
   useEffect(() => {
+    let isSubscribed = true;
+
     if (postId) {
       db.collection("posts").doc(postId).collection("likedBy").doc(userId).get().then((doc) => {
       if (doc.exists) {
-        setIsLiked(true);
+        if (isSubscribed) {
+          setIsLiked(true);
+        }
       } else {
-        setIsLiked(false);
+        if (isSubscribed) {
+          setIsLiked(false);
+        }
       }
       }).catch((error) => {
         console.log("Error getting liked: ", error)
       })
     }
+    return () => isSubscribed = false;
   }, [userId, postId])
 
   const clickLikeBtn = () => {

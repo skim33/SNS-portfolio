@@ -10,8 +10,10 @@ import EventNoteIcon from "@material-ui/icons/EventNote"
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay"
 import firebase from "firebase/app"
 import { db } from "../firebase"
-import {  selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
-import FlipMove from "react-flip-move"
+import { selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
+import FlipMove from "react-flip-move";
+
+export const unsubscriber = [];
 
 function Feed() {
   const userEmail = useSelector(selectEmail);
@@ -21,13 +23,15 @@ function Feed() {
   const [posts, setPosts] = useState([]);
   
   useEffect(() => {
-    db.collection("posts").orderBy("timestamp", "desc").onSnapshot(snapshot => (
+    const unsubscribe = db.collection("posts").orderBy("timestamp", "desc").onSnapshot(snapshot => (
       setPosts(snapshot.docs.map(doc => (
         {
           id: doc.id,
           data: doc.data()
         })))
     ));
+
+    unsubscriber.push(unsubscribe);
 
     return () => setPosts([]) 
   }, []);

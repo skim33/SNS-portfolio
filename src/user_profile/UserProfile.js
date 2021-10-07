@@ -19,13 +19,16 @@ const UserProfile = () => {
   const user = auth.currentUser;
 
   useEffect(() => {
-    var docRef = db.collection("user").doc(user.uid);
+    let isSubscribed = true;
+    var docRef = db.collection("users").doc(user.uid);
 
     docRef.get().then((doc) => {
       if(doc.exists) {
-        setUserData(doc.data());
+        if (isSubscribed) {
+          setUserData(doc.data());
+        }
       } else {
-        docRef.set({
+        doc.set({
           name: userDisplayName,
           email: userEmail,
           phoneNum: "",
@@ -33,25 +36,29 @@ const UserProfile = () => {
           photoUrl: userProfileURL || "",
     
         }).then(() => {
-          console.log("Document successfully written!");
-          setUserData(doc.data());
-        
+          if (isSubscribed) {
+            console.log("Document successfully written!");
+            console.log(doc.data());
+            setUserData(doc.data());
+          }
         }).catch((error) => {
           console.error("Error writing document: ", error);
         });
       }
     });
+
+    return () => isSubscribed = false;
   }, [user.uid, userData, userDisplayName, userEmail, userProfileURL]);
 
   const addUser = (e) => {
     e.preventDefault();
     setError("");
 
-    db.collection("user").doc(user.uid).set({
+    db.collection("users").doc(user.uid).set({
       name: userDisplayName,
       email: userEmail,
-      phoneNum: (phoneNum && isValidPhoneNumber(phoneNum)) ? phoneNum : userData.phoneNum,
-      hobby: hobby.length > 0 ? hobby : userData.hobby,
+      phoneNum: (phoneNum && isValidPhoneNumber(phoneNum)) ? phoneNum : (userData.phoneNum ? userData.phoneNum : ""),
+      hobby: hobby.length > 0 ? hobby : (userData.hobby ? userData.hobby : ""),
       photoUrl: userProfileURL || "",
 
     }).then(() => {
@@ -72,7 +79,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="wrapper">
+    <>
       <section>
         <div className="container">
           <div className="user infoBx">
@@ -107,7 +114,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }
 
