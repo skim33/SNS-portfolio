@@ -7,6 +7,7 @@ import { selectEmail } from "./features/userSlice"
 import { auth } from "./firebase"
 import { login, logout } from "./features/userSlice"
 import Home from "./home/Home"
+import UserProfile from './user_profile/UserProfile';
 import {
   BrowserRouter,
   Switch,
@@ -46,6 +47,10 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+
+            <Route path="/profile">
+              <UserProfile />
             </Route>
 
             <Route path="/messaging">

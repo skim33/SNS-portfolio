@@ -35,7 +35,7 @@ function Header() {
 
       <div className="header__right">
         <NavLink to="/" exact><HeaderOption Icon={HomeIcon} title="Home" /></NavLink>
-        <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
+        <NavLink to="/profile"><HeaderOption Icon={SupervisorAccountIcon} title="Profile" /></NavLink>
         <HeaderOption Icon={BusinessCenterIcon} title="Messaging" />
         <NavLink to="/messaging"><HeaderOption Icon={ChatIcon} title="Forum" /></NavLink>
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
