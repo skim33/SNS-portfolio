@@ -79,7 +79,7 @@ const UserProfile = () => {
   }
 
   return (
-    <>
+    <div className="wrapper">
       <section>
         <div className="container">
           <div className="user infoBx">
@@ -114,7 +114,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

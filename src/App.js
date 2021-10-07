@@ -9,7 +9,7 @@ import { selectEmail } from "./features/userSlice"
 import { auth } from "./firebase"
 import { login, logout } from "./features/userSlice"
 import Home from "./home/Home"
-import UserProfile from './user_profile/UserProfile';
+import UserProfile from './userProfile/UserProfile';
 import {
   BrowserRouter,
   Switch,
