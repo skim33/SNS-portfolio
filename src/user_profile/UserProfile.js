@@ -3,6 +3,7 @@ import { auth, db } from "../firebase"
 import { useSelector } from "react-redux"
 import {  selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
 import PhoneInput, {isValidPhoneNumber} from 'react-phone-number-input'
+import "react-phone-number-input/style.css";
 import "./UserProfile.css"
 
 const UserProfile = () => {
@@ -70,14 +71,20 @@ const UserProfile = () => {
 
   return (
     <div className="profile">
-      <form onSubmit={addUser}>
-        <div>{error}</div>
-        <input placeholder={userDisplayName} type="text" readOnly/>
-        <input placeholder={userEmail} type="text" readOnly/>
-        <PhoneInput onChange={setPhoneNum} value={phoneNum} placeholder="Phone Number"/>
-        <input onChange={(e) => setHobby(e.target.value)} placeholder="Hobby" type="text"/>
-        <button type="submit">Save</button>
-      </form>
+      <div className="right-column">
+        <form onSubmit={addUser}>
+          <div>{error}</div>
+          <input placeholder={userDisplayName} type="text" readOnly/>
+          <input placeholder={userEmail} type="text" readOnly/>
+          <PhoneInput onChange={setPhoneNum} value={phoneNum} placeholder="Phone Number"/>
+          <input onChange={(e) => setHobby(e.target.value)} placeholder="Hobby" type="text"/>
+          <button type="submit">Save</button>
+        </form>
+      </div>
+
+      <div className="left-column">
+
+      </div>
     </div>
   )
 }
