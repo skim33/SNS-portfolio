@@ -22,10 +22,23 @@ const UserProfile = () => {
       if(doc.exists) {
         setUserData(doc.data());
       } else {
-        return () => setUserData([]);
+        docRef.set({
+          name: userDisplayName,
+          email: userEmail,
+          phoneNum: "",
+          hobby: "",
+          photoUrl: userProfileURL || "",
+    
+        }).then(() => {
+          console.log("Document successfully written!");
+          setUserData(doc.data());
+        
+        }).catch((error) => {
+          console.error("Error writing document: ", error);
+        });
       }
     });
-  }, [user.uid, userData]);
+  }, [user.uid, userData, userDisplayName, userEmail, userProfileURL]);
 
   const addUser = (e) => {
     e.preventDefault();
