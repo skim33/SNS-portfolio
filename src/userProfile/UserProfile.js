@@ -107,8 +107,8 @@ const UserProfile = () => {
             <div className="formBx">
               <form onSubmit={addUser}>
                 <h2>Update Profile</h2>
-                <input placeholder={userDisplayName} type="text" readOnly/>
-                <input placeholder={userEmail} type="text" readOnly/>
+                <input style={{border: '1px solid crimson'}} placeholder={userDisplayName} type="text" readOnly/>
+                <input style={{border: '1px solid crimson'}} placeholder={userEmail} type="text" readOnly/>
                 <PhoneInput onChange={setPhoneNum} value={phoneNum} placeholder="Phone Number"/>
                 <input onChange={(e) => setHobby(e.target.value)} placeholder="Hobby" type="text"/>
                 <div className="btnBx">
