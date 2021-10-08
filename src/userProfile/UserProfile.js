@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Icon from './Icon'
 import { auth, db } from "../firebase"
 import { useSelector } from "react-redux"
 import {  selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
@@ -86,6 +87,7 @@ const UserProfile = () => {
   return (
     <div className="wrapper">
       <section className={isActive ? 'active' : ''}>
+        <Icon />
         <div className={isActive ? 'container active' : 'container'}>
           <div className="user infoBx">
             <div className="displayBx">
