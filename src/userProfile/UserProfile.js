@@ -18,6 +18,7 @@ const UserProfile = () => {
   const [hobby, setHobby] = useState("");
   const [error, setError] = useState("");
   const [userData, setUserData] = useState([]);
+  const [isActive, setIsActive] = useState(false);
   const user = auth.currentUser;
 
   useEffect(() => {
@@ -84,35 +85,33 @@ const UserProfile = () => {
 
   return (
     <div className="wrapper">
-      <section>
-        <div className="container">
+      <section className={isActive ? 'active' : ''}>
+        <div className={isActive ? 'container active' : 'container'}>
           <div className="user infoBx">
             <div className="displayBx">
               <h2>Your Profile</h2>
+              <div style={{textAlign: 'center', color: 'crimson'}}>{error}</div>
               <div>Name: <span>{userData.name}</span></div>
               <div>Email: <span>{userData.email}</span></div>
               <div>Phone Number: <span>{userData.phoneNum}</span></div>
               <div>Hobby: <span>{userData.hobby}</span></div>
-              <a href="#">Edit</a>
+              <button className="btn" onClick={() => setIsActive(!isActive)}>Update</button>
             </div>
             <div className="imgBx"><img src={ImageTwo} alt="locked" /></div>
           </div>
-        </div>
-      </section>
 
-      <section>
-        <div className="container">
           <div className="user editBx">
             <div className="imgBx"><img src={ImageOne} alt="unlocked" /></div>
             <div className="formBx">
               <form onSubmit={addUser}>
                 <h2>Update Profile</h2>
-                <div>{error}</div>
                 <input placeholder={userDisplayName} type="text" readOnly/>
                 <input placeholder={userEmail} type="text" readOnly/>
                 <PhoneInput onChange={setPhoneNum} value={phoneNum} placeholder="Phone Number"/>
                 <input onChange={(e) => setHobby(e.target.value)} placeholder="Hobby" type="text"/>
-                <button type="submit">Save</button>
+                <div className="btnBx">
+                  <button type="submit" className="btn" onClick={() => setIsActive(!isActive)}>Save</button>
+                </div>
               </form>
             </div>
           </div>
