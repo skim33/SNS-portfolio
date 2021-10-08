@@ -22,14 +22,15 @@ const UserProfile = () => {
 
   useEffect(() => {
     let isSubscribed = true;
+    const docRef = db.collection("users").doc(user.uid);
 
-    const unsubscribe = db.collection("users").doc(user.uid).onSnapshot((doc) => {
+    const unsubscribe = docRef.onSnapshot((doc) => {
       if(doc.exists) {
         if (isSubscribed) {
           setUserData(doc.data());
         }
       } else {
-        doc.set({
+        docRef.set({
           name: userDisplayName,
           email: userEmail,
           phoneNum: "",
