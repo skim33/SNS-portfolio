@@ -13,12 +13,14 @@ import { auth } from '../firebase';
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png"
 import { unsubscriber } from '../messaging/Feed'
+import { profileUnsubscribers } from '../userProfile/UserProfile'
 
 function Header() {
   const dispatch = useDispatch();
 
   const logoutOfApp = () => {
     unsubscriber.forEach(unsubscribe => unsubscribe());
+    profileUnsubscribers.forEach(unsubscribe => unsubscribe());
     auth.signOut().then(() => {
       dispatch((logout()))
     }).catch((err) => alert(err.message))

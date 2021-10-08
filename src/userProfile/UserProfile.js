@@ -8,6 +8,8 @@ import ImageOne from '../assets/unlocked.jpg'
 import ImageTwo from '../assets/locked.jpg'
 import "./UserProfile.css"
 
+export const profileUnsubscribers = [];
+
 const UserProfile = () => {
   const userEmail = useSelector(selectEmail);
   const userDisplayName = useSelector(selectDisplayName);
@@ -20,9 +22,8 @@ const UserProfile = () => {
 
   useEffect(() => {
     let isSubscribed = true;
-    var docRef = db.collection("users").doc(user.uid);
 
-    docRef.get().then((doc) => {
+    const unsubscribe = db.collection("users").doc(user.uid).onSnapshot((doc) => {
       if(doc.exists) {
         if (isSubscribed) {
           setUserData(doc.data());
@@ -46,6 +47,8 @@ const UserProfile = () => {
         });
       }
     });
+
+    profileUnsubscribers.push(unsubscribe);
 
     return () => isSubscribed = false;
   }, [user.uid, userData, userDisplayName, userEmail, userProfileURL]);
