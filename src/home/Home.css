@@ -1,6 +1,10 @@
 .home__body {
   width: 100%;
   background-color: #2a2f3c;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-60%);
 }
 
 ul {
