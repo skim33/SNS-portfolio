@@ -23,8 +23,6 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
   const [showMenu, setShowMenu] = useDetectOutsideClick(dropdownRef, false);
   const userId = useSelector(selectUid);
 
-  const onClick = () => setShowMenu(!showMenu);
-
   useEffect(() => {
     let isSubscribed = true;
     
@@ -134,9 +132,9 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
         <InputOption Icon={isLiked ? (ThumbUp) : (ThumbUpAltOutlinedIcon)} title="Like" color="gray" likesNum={likesNum} clickLikeBtn={clickLikeBtn} />
         <InputOption Icon={ChatOutlinedIcon} title="Comment" color="gray" />
         <div className="menu-container">
-          <div onClick={onClick} className="menu-trigger"><InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" /></div>
+          <div onClick={() => setShowMenu(!showMenu)} className="menu-trigger"><InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" /></div>
 
-          <ul ref={dropdownRef} className={`menu ${showMenu ? 'active' : 'inactive'}`}>
+          <ul ref={dropdownRef} className={`menu ${showMenu ? 'active' : ''}`}>
             <li><span　style={{'display': 'inline-block', 'verticalAlign': 'middle', 'paddingLeft': '3px'}}><FacebookIcon color="primary" /></span><a href="https://www.facebook.com/login/" target="_blank" rel="noreferrer" style={{'display': 'inline', 'verticalAlign': 'middle'}}>Facebook</a></li>
             <li><span style={{'display': 'inline-block', 'verticalAlign': 'middle', 'paddingLeft': '3px'}}><TwitterIcon style={{'fill': "#00acee"}} /></span><a href="https://twitter.com/i/flow/login" target="_blank" rel="noreferrer" style={{'display': 'inline', 'verticalAlign': 'middle'}}>Twitter</a></li>
             <li><span style={{'display': 'inline-block', 'verticalAlign': 'middle', 'paddingLeft': '3px'}}><LinkedInIcon style={{'fill': "#0072b1"}} /></span><a href="https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin" target="_blank" rel="noreferrer" style={{'display': 'inline', 'verticalAlign': 'middle'}}>LinkedIn</a></li>
