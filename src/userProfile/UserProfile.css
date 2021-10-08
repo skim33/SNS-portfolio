@@ -47,6 +47,36 @@ section .container .user .imgBx img {
   object-fit: cover;
 }
 
+section .container .user .displayBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transition: 0.5s;
+}
+
+section .container .user .displayBx div {
+  width: 100%;
+  padding: 10px;
+  color: #333;
+  border: none;
+  box-shadow: none;
+  font-size: 14px;
+  margin: 8px 0;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+section .container .user .displayBx div span {
+  padding: 10px;
+  font-weight: 500;
+}
+
 section .container .user .formBx {
   position: relative;
   width: 50%;

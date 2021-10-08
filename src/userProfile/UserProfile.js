@@ -87,12 +87,12 @@ const UserProfile = () => {
       <section>
         <div className="container">
           <div className="user infoBx">
-            <div className="formBx">
+            <div className="displayBx">
               <h2>Your Profile</h2>
-              <div>Name: {userData.name}</div>
-              <div>Email: {userData.email}</div>
-              <div>Phone Number: {userData.phoneNum}</div>
-              <div>Hobby: {userData.hobby}</div>
+              <div>Name: <span>{userData.name}</span></div>
+              <div>Email: <span>{userData.email}</span></div>
+              <div>Phone Number: <span>{userData.phoneNum}</span></div>
+              <div>Hobby: <span>{userData.hobby}</span></div>
               <a href="#">Edit</a>
             </div>
             <div className="imgBx"><img src={ImageTwo} alt="locked" /></div>
