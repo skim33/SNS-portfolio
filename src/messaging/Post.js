@@ -31,7 +31,6 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
     .then((querySnapshot) => {
       if (isSubscribed) {
         querySnapshot.forEach((doc) => {
-          console.log(doc.id, " => ", doc.data());
           setPostId(doc.id);
         });
       }
