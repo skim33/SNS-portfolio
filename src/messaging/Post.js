@@ -85,8 +85,6 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
 
     docRef.get().then((doc) => {
       if (doc.exists) {
-        console.log("Document data:", doc.data());
-
         if (doc.id === userId) {
           docRef.delete().then(()=>{
             console.log("Document successfully deleted!");
