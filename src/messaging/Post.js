@@ -129,7 +129,7 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
         <InputOption Icon={isLiked ? (ThumbUp) : (ThumbUpAltOutlinedIcon)} title="Like" color="gray" likesNum={likesNum} clickLikeBtn={clickLikeBtn} />
         <InputOption Icon={ChatOutlinedIcon} title="Comment" color="gray" />
         <div className="menu-container">
-          <div onClick={() => setShowMenu(!showMenu)} className="menu-trigger"><InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" /></div>
+          <div onClick={() => setShowMenu(!showMenu)}><InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" /></div>
 
           <ul ref={dropdownRef} className={`menu ${showMenu ? 'active' : ''}`}>
             <li><span　style={{'display': 'inline-block', 'verticalAlign': 'middle', 'paddingLeft': '3px'}}><FacebookIcon color="primary" /></span><a href="https://www.facebook.com/login/" target="_blank" rel="noreferrer" style={{'display': 'inline', 'verticalAlign': 'middle'}}>Facebook</a></li>
