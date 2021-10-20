@@ -1,21 +1,25 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import { ThemeProvider } from "@material-ui/core/styles";
-import { unstable_createMuiStrictModeTheme } from '@material-ui/core/styles';
-import Header from "./header/Header"
-import Login from "./login/Login"
-import { useDispatch, useSelector } from "react-redux"
-import { selectEmail } from "./features/userSlice"
-import { auth } from "./firebase"
-import { login, logout } from "./features/userSlice"
-import Home from "./home/Home"
-import UserProfile from './userProfile/UserProfile';
+import React, { useEffect } from 'react'
+
+import Home from './home/Home'
+import UserProfile from './userProfile/UserProfile'
+import MessagingIndex from './messaging/MessagingIndex'
+import Header from './header/Header'
+import Login from './login/Login'
 import {
   BrowserRouter,
   Switch,
   Route
-} from "react-router-dom"
-import MessagingIndex from "./messaging/MessagingIndex"
+} from 'react-router-dom'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { selectEmail } from './features/userSlice'
+import { auth } from './firebase'
+import { login, logout } from './features/userSlice'
+
+import { ThemeProvider } from '@material-ui/core/styles'
+import { unstable_createMuiStrictModeTheme } from '@material-ui/core/styles'
+
+import './App.css'
 
 function App() {
   const userEmail = useSelector(selectEmail);

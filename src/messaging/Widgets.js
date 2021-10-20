@@ -1,7 +1,9 @@
 import React from 'react'
-import "./Widgets.css"
-import InfoIcon from "@material-ui/icons/Info"
+
+import InfoIcon from '@material-ui/icons/Info'
 import FiberManualRecordIcon  from '@material-ui/icons/FiberManualRecord'
+
+import './Widgets.css'
 
 function Widgets() {
   const newsArticle = (heading, subtitle) => (

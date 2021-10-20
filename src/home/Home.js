@@ -1,10 +1,14 @@
 import React from 'react'
-import "./Home.css"
-import $ from "jquery"
-import "../extremes.js"
+
 import HomeIcon from './HomeIcon'
 import HomePopUp from './HomePopUp'
+
+import $ from "jquery"
+import "../extremes.js"
+
 import { Tooltip } from '@material-ui/core'
+
+import './Home.css'
 
 class Home extends React.Component {
   constructor() {

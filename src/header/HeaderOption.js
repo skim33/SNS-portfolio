@@ -1,8 +1,11 @@
 import React from "react"
-import "./HeaderOption.css"
-import { Avatar } from '@material-ui/core'
+
 import { useSelector } from "react-redux"
 import { selectEmail, selectProfileURL } from "../features/userSlice"
+
+import { Avatar } from '@material-ui/core'
+
+import "./HeaderOption.css"
 
 function HeaderOption({ avatar, Icon, title, onClick }) {
   const userProfileURL = useSelector(selectProfileURL);

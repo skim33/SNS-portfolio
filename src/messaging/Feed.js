@@ -1,17 +1,21 @@
-import React, {useState, useEffect} from "react"
-import { useSelector } from "react-redux"
-import "./Feed.css"
-import InputOption from "./InputOption"
-import Post from "./Post"
-import CreateIcon from "@material-ui/icons/Create"
-import ImageIcon from "@material-ui/icons/Image"
-import SubscriptionsIcon from "@material-ui/icons/Subscriptions"
-import EventNoteIcon from "@material-ui/icons/EventNote"
-import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay"
-import firebase from "firebase/app"
-import { db } from "../firebase"
-import { selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
-import FlipMove from "react-flip-move";
+import React, {useState, useEffect} from 'react'
+
+import InputOption from './InputOption'
+import Post from './Post'
+import FlipMove from 'react-flip-move';
+
+import { useSelector } from 'react-redux'
+import firebase from 'firebase/app'
+import { db } from '../firebase'
+import { selectEmail, selectDisplayName, selectProfileURL } from '../features/userSlice'
+
+import CreateIcon from '@material-ui/icons/Create'
+import ImageIcon from '@material-ui/icons/Image'
+import SubscriptionsIcon from '@material-ui/icons/Subscriptions'
+import EventNoteIcon from '@material-ui/icons/EventNote'
+import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
+
+import './Feed.css'
 
 export const unsubscriber = [];
 

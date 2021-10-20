@@ -1,5 +1,6 @@
 import React from 'react'
-import "./InputOption.css"
+
+import './InputOption.css'
 
 function InputOption({ Icon, title, color, likesNum, clickLikeBtn }) {
   return (

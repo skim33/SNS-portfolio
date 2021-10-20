@@ -1,19 +1,24 @@
-import { Avatar } from "@material-ui/core"
-import React, { forwardRef, useState, useEffect, useRef } from "react"
-import "./Post.css"
-import InputOption from "./InputOption"
-import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined"
-import ThumbUp from "@material-ui/icons/ThumbUp"
-import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined"
-import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined"
-import SendOutlinedIcon from "@material-ui/icons/SendOutlined"
-import { db } from "../firebase"
-import { useSelector } from "react-redux"
-import { selectUid } from "../features/userSlice"
+
+import React, { forwardRef, useState, useEffect, useRef } from 'react'
+
+import InputOption from './InputOption'
+
+import { db } from '../firebase'
+import { useSelector } from 'react-redux'
+import { selectUid } from '../features/userSlice'
+
+import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined'
+import ThumbUp from '@material-ui/icons/ThumbUp'
+import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined'
+import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined'
+import SendOutlinedIcon from '@material-ui/icons/SendOutlined'
+import { Avatar } from '@material-ui/core'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import TwitterIcon from '@material-ui/icons/Twitter'
 import { useDetectOutsideClick } from './useDetectOutsideClick'
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
+
+import './Post.css'
 
 const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, ref ) => {
   const [postId, setPostId] = useState("");

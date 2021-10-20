@@ -1,8 +1,8 @@
-import React from "react"
-import { useSelector } from "react-redux"
-import "./Sidebar.css"
-import { Avatar } from "@material-ui/core" 
-import {  selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
+import React from 'react'
+import { useSelector } from 'react-redux'
+import './Sidebar.css'
+import { Avatar } from '@material-ui/core'
+import {  selectEmail, selectDisplayName, selectProfileURL } from '../features/userSlice'
 
 function Sidebar() {
 

@@ -1,8 +1,10 @@
 import React from 'react'
-import Popup from 'reactjs-popup'
-import "./HomePopUp.css"
 
-const HomePopUp = ({open, onClose, url, title, ref}) => {
+import Popup from 'reactjs-popup'
+
+import './HomePopUp.css'
+
+const HomePopUp = ({open, onClose, url, title}) => {
   return (
     <Popup open={open} closeOnDocumentClick onClose={onClose}>
       <div className="modal">

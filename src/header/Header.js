@@ -1,19 +1,24 @@
-import React from "react"
-import "./Header.css"
-import SearchIcon from "@material-ui/icons/Search";
-import HeaderOption from "./HeaderOption"
-import HomeIcon from "@material-ui/icons/Home"
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount"
-import BusinessCenterIcon  from "@material-ui/icons/BusinessCenter"
-import ChatIcon  from "@material-ui/icons/Chat"
-import NotificationsIcon  from "@material-ui/icons/Notifications"
-import { useDispatch } from "react-redux"
-import { logout } from "../features/userSlice"
-import { auth } from '../firebase';
-import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png"
+import React from 'react'
+
+import HeaderOption from './HeaderOption'
 import { unsubscriber } from '../messaging/Feed'
 import { profileUnsubscribers } from '../userProfile/UserProfile'
+
+import { auth } from '../firebase'
+import { useDispatch } from 'react-redux'
+import { logout } from '../features/userSlice'
+import { NavLink } from 'react-router-dom'
+
+import SearchIcon from '@material-ui/icons/Search'
+import HomeIcon from '@material-ui/icons/Home'
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
+import BusinessCenterIcon  from '@material-ui/icons/BusinessCenter'
+import ChatIcon  from '@material-ui/icons/Chat'
+import NotificationsIcon  from '@material-ui/icons/Notifications'
+
+import './Header.css'
+import logo from '../assets/logo.png'
+
 
 function Header() {
   const dispatch = useDispatch();

@@ -1,7 +1,9 @@
-import { Avatar } from '@material-ui/core'
 import { useSelector } from "react-redux"
 import { selectEmail, selectProfileURL} from "../features/userSlice"
-import useStyles from './styles';
+
+import { Avatar } from '@material-ui/core'
+
+import useStyles from './styles'
 
 function HomeIcon() {
   const userProfileURL = useSelector(selectProfileURL);

@@ -1,10 +1,12 @@
-import React, { useState } from "react"
-import "./Login.css"
-import firebase from "firebase/app";
-import { auth } from "../firebase"
-import { useDispatch } from "react-redux"
-import { login } from "../features/userSlice"
-import logo from "../assets/logo_login.png"
+import React, { useState } from 'react'
+
+import firebase from 'firebase/app';
+import { auth } from '../firebase'
+import { useDispatch } from 'react-redux'
+import { login } from '../features/userSlice'
+
+import './Login.css'
+import logo from '../assets/logo_login.png'
 
 function Login() {
   const [email, setEmail] = useState("");

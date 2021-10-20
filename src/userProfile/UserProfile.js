@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import Icon from './Icon'
-import { auth, db } from "../firebase"
-import { useSelector } from "react-redux"
-import {  selectEmail, selectDisplayName, selectProfileURL } from "../features/userSlice"
+
+import { auth, db } from '../firebase'
+import { useSelector } from 'react-redux'
+import {  selectEmail, selectDisplayName, selectProfileURL } from '../features/userSlice'
 import PhoneInput, {isValidPhoneNumber} from 'react-phone-number-input'
-import "react-phone-number-input/style.css";
+
+import './UserProfile.css'
+import 'react-phone-number-input/style.css';
+import Icon from './Icon'
+
 import ImageOne from '../assets/unlocked.jpg'
 import ImageTwo from '../assets/locked.jpg'
-import "./UserProfile.css"
 
 export const profileUnsubscribers = [];
 
