@@ -8,7 +8,7 @@
   <h3 align="center">SNS Portflio</h3>
 
   <p align="center">
-    A simple forum website with Like functionality
+    A simple forum website with Like and Share functionality
     <br />
     <a href="https://github.com/skim33/SNS-portfolio"><strong>Explore the docs »</strong></a>
     <br />
@@ -44,7 +44,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://shawn-kim-portfolio.web.app/messaging)
 
-One of the most used features of SNS used nowadays is realtime interaction between users. This social networking web app is built with the React Framework for frontend, and Firebase backend services, which allows users to add posts on the feed with "Like" functionality.
+One of the most used features of SNS used nowadays is realtime interaction between users. This social networking web app is built with the React Framework for frontend, and Firebase backend services, which allows users to add posts on the feed with "Like" and "Share" functionality.
 
 ### Built With
 
