@@ -49,41 +49,35 @@ function App() {
         }
       }, reject);
 
-      setTimeout(() => {
-        subTextRefs.forEach((span, index) => {
-          setTimeout(() => {
-            span.classList.add('active');
-          }, (index + 1) * 400)
-        });
+      // setTimeout(() => {
+      //   subTextRefs.forEach((span, index) => {
+      //     setTimeout(() => {
+      //       span.classList.add('active');
+      //     }, (index + 1) * 400)
+      //   });
   
-        setTimeout(() => {
-          subTextRefs.forEach((span, index) => {
+      //   setTimeout(() => {
+      //     subTextRefs.forEach((span, index) => {
   
-            setTimeout(() => {
-              span.classList.remove('active');
-              span.classList.add('fade');
-            }, (index + 1) * 50)
-          })
-        }, 2000);
+      //       setTimeout(() => {
+      //         span.classList.remove('active');
+      //         span.classList.add('fade');
+      //       }, (index + 1) * 50)
+      //     })
+      //   }, 2000);
   
-        if (introRef.current) {
-          setTimeout(() => {
-            introRef.current.style.top = '-100vh';
-          }, 2300);
-        }
-      })
+      //   if (introRef.current) {
+      //     setTimeout(() => {
+      //       introRef.current.style.top = '-100vh';
+      //     }, 2300);
+      //   }
+      // })
     });
   });
 
-  const LoginContainer = () => (
-    <>
-      <Route exact path="/" render={() => <Redirect to="/login" />} />
-      <Route path="/login" component={Login} />
-    </>
-  )
-
   const DefaultContainer = () => (
     <>
+      <Route render={() => <Redirect to="/home" />} />
       <Header />
       <Route path="/home" component={Home} />
       <Route path="/profile" component={UserProfile} />
@@ -93,25 +87,29 @@ function App() {
 
   return (
     <ThemeProvider theme = {theme}>
-      {!userEmail && !userName ? (
-        <Login />
-      ) : (
-        <>
-          <div className="intro" ref={introRef}>
-            <h1 className="text">
+      <div className="app">
+        {/* <div className="intro" ref={introRef}>
+          <h1 className="text">
 
-              <span className="subText" ref={el => el && subTextRefs.push(el)}>Welcome,</span>{' '}<span className="subText" ref={el => el && subTextRefs.push(el)}>{userName}</span>
-            </h1>
-          </div>
+            <span className="subText" ref={el => el && subTextRefs.push(el)}>Welcome,</span>{' '}<span className="subText" ref={el => el && subTextRefs.push(el)}>{userName}</span>
+          </h1>
+        </div> */}
 
+        {!userEmail && !userName ? (
           <BrowserRouter>
             <Switch>
-              <Route exact path="/(login)" component={LoginContainer}/>
+              <Route exact path="/" render={() => <Redirect to="/login" />} />
+              <Route path="/login" component={Login} />
+            </Switch>
+          </BrowserRouter>
+        ) : (
+          <BrowserRouter>
+            <Switch>
               <Route component={DefaultContainer}/>
             </Switch>
           </BrowserRouter>
-        </>
-      )}
+        )}
+      </div>
     </ThemeProvider>
   );
 }

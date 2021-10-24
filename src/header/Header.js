@@ -7,7 +7,7 @@ import { profileUnsubscribers } from '../userProfile/UserProfile'
 import { auth } from '../firebase'
 import { useDispatch } from 'react-redux'
 import { logout } from '../features/userSlice'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 import SearchIcon from '@material-ui/icons/Search'
 import HomeIcon from '@material-ui/icons/Home'
@@ -22,6 +22,7 @@ import logo from '../assets/logo.png'
 
 function Header() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const logoutOfApp = () => {
     unsubscriber.forEach(unsubscribe => unsubscribe());
@@ -29,6 +30,7 @@ function Header() {
     auth.signOut().then(() => {
       dispatch((logout()))
     }).catch((err) => alert(err.message))
+    history.push('/login');
   };
 
   return (
@@ -44,7 +46,7 @@ function Header() {
 
       <div className="header__right">
         <ul>
-          <li><NavLink to="/home" exact><HeaderOption Icon={HomeIcon} title="Home" /></NavLink></li>
+          <li><NavLink to="/home"><HeaderOption Icon={HomeIcon} title="Home" /></NavLink></li>
           <li><NavLink to="/profile"><HeaderOption Icon={SupervisorAccountIcon} title="Profile" /></NavLink></li>
           <li><HeaderOption Icon={BusinessCenterIcon} title="Messaging" /></li>
           <li><NavLink to="/messaging"><HeaderOption Icon={ChatIcon} title="Forum" /></NavLink></li>
