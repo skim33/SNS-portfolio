@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userReducer from '../features/userSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import userReducer from '../features/userSlice'
+import throttle from 'lodash/throttle'
 
 
 const loadState = () => {
@@ -19,7 +20,7 @@ const saveState = (state) => {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (e) {
-    // Ignore write errors;
+    
   }
 };
 
@@ -27,14 +28,13 @@ const persistedState = loadState();
 
 const store = configureStore({
   persistedState,
-  // Others reducers...
   reducer: {
     user: userReducer
   },
 });
 
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   saveState(store.getState());
-});
+}, 1000));
 
-export {store}
+export { store }
