@@ -29,7 +29,6 @@ function App() {
   const introRef = createRef(null);
   const subTextRefs = [];
 
-
   useEffect(() => {
     auth.onAuthStateChanged(userAuth => {
       if (userAuth) {
@@ -45,14 +44,11 @@ function App() {
         dispatch(logout());
       }
     });
-  });
 
-  useEffect(() => {
     setTimeout(() => {
       subTextRefs.forEach((span, index) => {
         setTimeout(() => {
           span.classList.add('active');
-          console.log(span)
         }, (index + 1) * 400)
       });
 
@@ -68,17 +64,16 @@ function App() {
 
       if (introRef.current) {
         setTimeout(() => {
-          console.log(introRef.current.style.top);
           introRef.current.style.top = '-100vh';
         }, 2300);
       }
     })
-  }, [introRef, subTextRefs]);
+  });
 
   return (
     <ThemeProvider theme = {theme}>
       <div className="app">
-        {!userEmail ? (
+        {!userEmail && !userName ? (
           <Login />
         ) : (
           <>
