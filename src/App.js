@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, createRef } from 'react'
 
 import Home from './home/Home'
 import UserProfile from './userProfile/UserProfile'
@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { selectEmail } from './features/userSlice'
+import { selectDisplayName, selectEmail } from './features/userSlice'
 import { auth } from './firebase'
 import { login, logout } from './features/userSlice'
 
@@ -23,8 +23,12 @@ import './App.css'
 
 function App() {
   const userEmail = useSelector(selectEmail);
+  const userName = useSelector(selectDisplayName);
   const dispatch = useDispatch();
   const theme = unstable_createMuiStrictModeTheme();
+  const introRef = createRef(null);
+  const subTextRefs = [];
+
 
   useEffect(() => {
     auth.onAuthStateChanged(userAuth => {
@@ -43,29 +47,65 @@ function App() {
     });
   });
 
+  useEffect(() => {
+    setTimeout(() => {
+      subTextRefs.forEach((span, index) => {
+        setTimeout(() => {
+          span.classList.add('active');
+          console.log(span)
+        }, (index + 1) * 400)
+      });
+
+      setTimeout(() => {
+        subTextRefs.forEach((span, index) => {
+
+          setTimeout(() => {
+            span.classList.remove('active');
+            span.classList.add('fade');
+          }, (index + 1) * 50)
+        })
+      }, 2000);
+
+      if (introRef.current) {
+        setTimeout(() => {
+          console.log(introRef.current.style.top);
+          introRef.current.style.top = '-100vh';
+        }, 2300);
+      }
+    })
+  }, [introRef, subTextRefs]);
+
   return (
     <ThemeProvider theme = {theme}>
       <div className="app">
-
         {!userEmail ? (
           <Login />
         ) : (
-          <BrowserRouter>
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
+          <>
+            <div className="intro" ref={introRef}>
+              <h1 className="text">
 
-              <Route path="/profile">
-                <UserProfile />
-              </Route>
+                <span className="subText" ref={el => el && subTextRefs.push(el)}>Welcome,</span>{' '}<span className="subText" ref={el => el && subTextRefs.push(el)}>{userName}</span>
+              </h1>
+            </div>
 
-              <Route path="/messaging">
-                <MessagingIndex />
-              </Route>
-            </Switch>
-          </BrowserRouter>
+            <BrowserRouter>
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+
+                <Route path="/profile">
+                  <UserProfile />
+                </Route>
+
+                <Route path="/messaging">
+                  <MessagingIndex />
+                </Route>
+              </Switch>
+            </BrowserRouter>
+          </>
         )}
       </div>
     </ThemeProvider>
