@@ -44,7 +44,7 @@ function Header() {
 
       <div className="header__right">
         <ul>
-          <li><NavLink to="/" exact><HeaderOption Icon={HomeIcon} title="Home" /></NavLink></li>
+          <li><NavLink to="/home" exact><HeaderOption Icon={HomeIcon} title="Home" /></NavLink></li>
           <li><NavLink to="/profile"><HeaderOption Icon={SupervisorAccountIcon} title="Profile" /></NavLink></li>
           <li><HeaderOption Icon={BusinessCenterIcon} title="Messaging" /></li>
           <li><NavLink to="/messaging"><HeaderOption Icon={ChatIcon} title="Forum" /></NavLink></li>

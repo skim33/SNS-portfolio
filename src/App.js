@@ -8,7 +8,8 @@ import Login from './login/Login'
 import {
   BrowserRouter,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -30,79 +31,87 @@ function App() {
   const subTextRefs = [];
 
   useEffect(() => {
-    auth.onAuthStateChanged(userAuth => {
-      if (userAuth) {
-        // user is logged in
-        dispatch(login({
-          email: userAuth.email,
-          uid: userAuth.uid,
-          displayName: userAuth.displayName,
-          photoUrl: userAuth.photoURL
-        }));
-      } else {
-        // user is logged out
-        dispatch(logout());
-      }
-    });
+    return new Promise((resolve, reject) => {
+      const unsubscribe = auth.onAuthStateChanged(userAuth => {
+        unsubscribe();
+        if (userAuth) {
+          // user is logged in
+          resolve(dispatch(login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+            photoUrl: userAuth.photoURL
+          })
 
-    setTimeout(() => {
-      subTextRefs.forEach((span, index) => {
-        setTimeout(() => {
-          span.classList.add('active');
-        }, (index + 1) * 400)
-      });
+        ))} else {
+          // user is logged out
+          resolve(dispatch(logout()));
+        }
+      }, reject);
 
       setTimeout(() => {
         subTextRefs.forEach((span, index) => {
-
           setTimeout(() => {
-            span.classList.remove('active');
-            span.classList.add('fade');
-          }, (index + 1) * 50)
-        })
-      }, 2000);
-
-      if (introRef.current) {
+            span.classList.add('active');
+          }, (index + 1) * 400)
+        });
+  
         setTimeout(() => {
-          introRef.current.style.top = '-100vh';
-        }, 2300);
-      }
-    })
+          subTextRefs.forEach((span, index) => {
+  
+            setTimeout(() => {
+              span.classList.remove('active');
+              span.classList.add('fade');
+            }, (index + 1) * 50)
+          })
+        }, 2000);
+  
+        if (introRef.current) {
+          setTimeout(() => {
+            introRef.current.style.top = '-100vh';
+          }, 2300);
+        }
+      })
+    });
   });
+
+  const LoginContainer = () => (
+    <>
+      <Route exact path="/" render={() => <Redirect to="/login" />} />
+      <Route path="/login" component={Login} />
+    </>
+  )
+
+  const DefaultContainer = () => (
+    <>
+      <Header />
+      <Route path="/home" component={Home} />
+      <Route path="/profile" component={UserProfile} />
+      <Route path="/messaging" component={MessagingIndex} />
+    </>
+ )
 
   return (
     <ThemeProvider theme = {theme}>
-      <div className="app">
-        {!userEmail && !userName ? (
-          <Login />
-        ) : (
-          <>
-            <div className="intro" ref={introRef}>
-              <h1 className="text">
+      {!userEmail && !userName ? (
+        <Login />
+      ) : (
+        <>
+          <div className="intro" ref={introRef}>
+            <h1 className="text">
 
-                <span className="subText" ref={el => el && subTextRefs.push(el)}>Welcome,</span>{' '}<span className="subText" ref={el => el && subTextRefs.push(el)}>{userName}</span>
-              </h1>
-            </div>
+              <span className="subText" ref={el => el && subTextRefs.push(el)}>Welcome,</span>{' '}<span className="subText" ref={el => el && subTextRefs.push(el)}>{userName}</span>
+            </h1>
+          </div>
 
-            <BrowserRouter>
-              <Header />
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-
-                <Route path="/profile">
-                  <UserProfile />
-                </Route>
-
-                <Route path="/messaging">
-                  <MessagingIndex />
-                </Route>
-              </Switch>
-            </BrowserRouter>
-          </>
-        )}
-      </div>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/(login)" component={LoginContainer}/>
+              <Route component={DefaultContainer}/>
+            </Switch>
+          </BrowserRouter>
+        </>
+      )}
     </ThemeProvider>
   );
 }
