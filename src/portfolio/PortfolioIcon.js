@@ -5,7 +5,7 @@ import { Avatar } from '@material-ui/core'
 
 import useStyles from './styles'
 
-function HomeIcon() {
+function PortfolioIcon() {
   const userProfileURL = useSelector(selectProfileURL);
   const userEmail = useSelector(selectEmail);
   const classes = useStyles();
@@ -15,4 +15,4 @@ function HomeIcon() {
   )
 }
 
-export default HomeIcon
+export default PortfolioIcon

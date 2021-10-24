@@ -2,9 +2,9 @@ import React from 'react'
 
 import Popup from 'reactjs-popup'
 
-import './HomePopUp.css'
+import './PortfolioPopup.css'
 
-const HomePopUp = ({open, onClose, url, title}) => {
+const PortfolioPopUp = ({open, onClose, url, title}) => {
   return (
     <Popup open={open} closeOnDocumentClick onClose={onClose}>
       <div className="modal">
@@ -17,7 +17,7 @@ const HomePopUp = ({open, onClose, url, title}) => {
   )
 }
 
-export default HomePopUp
+export default PortfolioPopUp
 
 
 

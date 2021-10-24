@@ -1,6 +1,7 @@
-import React, { useEffect, createRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import Home from './home/Home'
+import Portfolio from './portfolio/Portfolio'
 import UserProfile from './userProfile/UserProfile'
 import MessagingIndex from './messaging/MessagingIndex'
 import Header from './header/Header'
@@ -27,8 +28,9 @@ function App() {
   const userName = useSelector(selectDisplayName);
   const dispatch = useDispatch();
   const theme = unstable_createMuiStrictModeTheme();
-  const introRef = createRef(null);
-  const subTextRefs = [];
+  const introRef = useRef(null);
+  const firstSpanRef = useRef(null);
+  const secondSpanRef = useRef(null);
 
   useEffect(() => {
     return new Promise((resolve, reject) => {
@@ -49,29 +51,37 @@ function App() {
         }
       }, reject);
 
-      // setTimeout(() => {
-      //   subTextRefs.forEach((span, index) => {
-      //     setTimeout(() => {
-      //       span.classList.add('active');
-      //     }, (index + 1) * 400)
-      //   });
+      if (introRef.current !== null && firstSpanRef !== null && secondSpanRef !== null) {
+        setTimeout(() => {
+          console.log(firstSpanRef);
+          console.log(firstSpanRef);
   
-      //   setTimeout(() => {
-      //     subTextRefs.forEach((span, index) => {
+          setTimeout(() => {
+            firstSpanRef.current.classList.add('active');
+          }, 400);
   
-      //       setTimeout(() => {
-      //         span.classList.remove('active');
-      //         span.classList.add('fade');
-      //       }, (index + 1) * 50)
-      //     })
-      //   }, 2000);
+          setTimeout(() => {
+            secondSpanRef.current.classList.add('active');
+          }, 800);
   
-      //   if (introRef.current) {
-      //     setTimeout(() => {
-      //       introRef.current.style.top = '-100vh';
-      //     }, 2300);
-      //   }
-      // })
+          setTimeout(() => {
+            setTimeout(() => {
+              firstSpanRef.current.classList.remove('active');
+              firstSpanRef.current.classList.add('fade');
+            }, 50);
+  
+            setTimeout(() => {
+              secondSpanRef.current.classList.remove('active');
+              secondSpanRef.current.classList.add('fade');
+            }, 100);
+          }, 2000);
+  
+          setTimeout(() => {
+            introRef.current.style.top = '-100vh';
+          }, 2300);
+  
+        })
+      }
     });
   });
 
@@ -80,6 +90,7 @@ function App() {
       <Route render={() => <Redirect to="/home" />} />
       <Header />
       <Route path="/home" component={Home} />
+      <Route path="/portfolio" component={Portfolio} />
       <Route path="/profile" component={UserProfile} />
       <Route path="/messaging" component={MessagingIndex} />
     </>
@@ -88,12 +99,6 @@ function App() {
   return (
     <ThemeProvider theme = {theme}>
       <div className="app">
-        {/* <div className="intro" ref={introRef}>
-          <h1 className="text">
-
-            <span className="subText" ref={el => el && subTextRefs.push(el)}>Welcome,</span>{' '}<span className="subText" ref={el => el && subTextRefs.push(el)}>{userName}</span>
-          </h1>
-        </div> */}
 
         {!userEmail && !userName ? (
           <BrowserRouter>
@@ -103,11 +108,20 @@ function App() {
             </Switch>
           </BrowserRouter>
         ) : (
-          <BrowserRouter>
-            <Switch>
-              <Route component={DefaultContainer}/>
-            </Switch>
-          </BrowserRouter>
+          <>
+            <div className="intro" ref={introRef}>
+              <h1 className="text">
+
+                <span className="subText" ref={firstSpanRef}>Welcome,</span>{' '}<span className="subText" ref={secondSpanRef}>{userName}</span>
+              </h1>
+            </div>
+
+            <BrowserRouter>
+              <Switch>
+                <Route component={DefaultContainer}/>
+              </Switch>
+            </BrowserRouter>
+          </>
         )}
       </div>
     </ThemeProvider>

@@ -47,8 +47,8 @@ function Header() {
       <div className="header__right">
         <ul>
           <li><NavLink to="/home"><HeaderOption Icon={HomeIcon} title="Home" /></NavLink></li>
+          <li><NavLink to="/portfolio"><HeaderOption Icon={BusinessCenterIcon} title="Portfolio" /></NavLink></li>
           <li><NavLink to="/profile"><HeaderOption Icon={SupervisorAccountIcon} title="Profile" /></NavLink></li>
-          <li><HeaderOption Icon={BusinessCenterIcon} title="Messaging" /></li>
           <li><NavLink to="/messaging"><HeaderOption Icon={ChatIcon} title="Forum" /></NavLink></li>
           <li><HeaderOption Icon={NotificationsIcon} title="Notifications" /></li>
           <li><HeaderOption avatar={true} title="me" onClick={logoutOfApp} /></li>
