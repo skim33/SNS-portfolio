@@ -1,7 +1,7 @@
 .home__body {
+  position: absolute;
   width: 100%;
   background-color: #2a2f3c;
-  position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-60%);
@@ -139,4 +139,8 @@ ul {
   animation: 2.3s fadeIn;
   animation-fill-mode: forwards;
   visibility: hidden;
+}
+
+.pageloaded {
+  animation: none;
 }

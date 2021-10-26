@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import Home from './home/Home'
 import Portfolio from './portfolio/Portfolio'
@@ -28,6 +28,7 @@ function App() {
   const userName = useSelector(selectDisplayName);
   const dispatch = useDispatch();
   const theme = unstable_createMuiStrictModeTheme();
+  const [isToggled, setIsToggled] = useState(false);
   const introRef = useRef(null);
   const firstSpanRef = useRef(null);
   const secondSpanRef = useRef(null);
@@ -53,9 +54,6 @@ function App() {
 
       if (introRef.current !== null && firstSpanRef !== null && secondSpanRef !== null) {
         setTimeout(() => {
-          console.log(firstSpanRef);
-          console.log(firstSpanRef);
-  
           setTimeout(() => {
             firstSpanRef.current.classList.add('active');
           }, 400);
@@ -79,18 +77,24 @@ function App() {
           setTimeout(() => {
             introRef.current.style.top = '-100vh';
           }, 2300);
-  
         })
       }
     });
   });
 
+  const toggleSidebar = (e) => {
+    e.preventDefault();
+    setIsToggled(!isToggled);
+  }
+
   const DefaultContainer = () => (
     <>
-      <Route render={() => <Redirect to="/home" />} />
-      <Header />
-      <Route path="/home" component={Home} />
-      <Route path="/portfolio" component={Portfolio} />
+      <Header isToggled={isToggled} toggleSidebar={toggleSidebar}/>
+      <Route path="/home">
+        <Home isToggled={isToggled}/>
+      </Route>
+      <Route path="/portfolio" component={Portfolio}>
+      </Route>
       <Route path="/profile" component={UserProfile} />
       <Route path="/messaging" component={MessagingIndex} />
     </>
@@ -109,12 +113,12 @@ function App() {
           </BrowserRouter>
         ) : (
           <>
-            <div className="intro" ref={introRef}>
+            {/* <div className="intro" ref={introRef}>
               <h1 className="text">
 
                 <span className="subText" ref={firstSpanRef}>Welcome,</span>{' '}<span className="subText" ref={secondSpanRef}>{userName}</span>
               </h1>
-            </div>
+            </div> */}
 
             <BrowserRouter>
               <Switch>

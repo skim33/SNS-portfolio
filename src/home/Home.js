@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Home = () => {
+import './Home.css'
+
+const Home = ({isToggled}) => {
   return (
-    <div>
-      Hello World
+    <div className={`home_content ${isToggled && 'toggled'}`}>
+      <div className={`home ${isToggled && 'toggled'}`}>Home Content</div>
     </div>
   )
 }

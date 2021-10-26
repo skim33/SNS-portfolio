@@ -1,51 +1,203 @@
-.header {
-  position: sticky;
+.sidebar {
+  position: fixed;
   top: 0;
+  left: 0;
+  height: 100%;
+  width: 78px;
+  background-color: #11101d;
+  padding: 6px 14px;
+  transition: all 0.5s ease;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  width: 240px;
+}
+
+.sidebar .logo_content .logo {
+  color: #fff;
   display: flex;
-  background-color: white;
-  justify-content: space-evenly;
-  border-bottom: 0.3px solid lightgray;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  height: 50px;
   width: 100%;
-  z-index: 999;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
 }
 
-.header__left {
-  display: flex;
+.sidebar.active .logo_content .logo {
+  opacity: 1;
+  pointer-events: none;
 }
 
-.header__left > img {
-  object-fit: contain;
-  height: 40px;
-  width: auto;
-  margin-right: 20px;
+.logo_content .logo .codeIcon {
+  font-size: 28px;
+  margin-right: 5px;
 }
 
-.header__search {
-  padding: 10px;
+.logo_content .logo .logo_name {
+  font-size: 20px;
+  font-weight: 400;
+  transition: all 1s ease;
+  opacity: 0;
+}
+
+.sidebar.active .logo_content .logo .logo_name {
+  opacity: 1;
+}
+
+.sidebar .btn {
+  position: absolute;
+  color: #fff;
+  left: 50%;
+  top: 15px;
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+
+.sidebar.active .btn {
+  left: 90%;
+}
+
+.sidebar ul {
+  width: 75%;
+  margin: 10px 10px;
+}
+
+.sidebar ul li {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+  list-style: none;
+}
+
+.sidebar ul li .tooltip {
+  position: absolute;
+  left: 122px;
+  top: 0;
+  transform: translate(-55%, -50%);
+  border-radius: 6px;
+  height: 35px;
+  width: 122px;
+  background: #fff;
+  line-height: 35px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: 0s;
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.sidebar.active ul li .tooltip {
+  display: none;
+}
+
+.sidebar ul li:hover .tooltip {
+  transition: all 0.5s ease;
+  opacity: 1;
+  top: 50%;
+}
+
+.sidebar ul li input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding-left: 40px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  background-color: #1d1b31;
+}
+
+.sidebar ul li .searchIcon {
+  position: absolute;
+  z-index: 99;
+  color: #fff;
+  font-size: 30px;
+  transition: all 0.5s ease;
+}
+
+.sidebar ul li .searchIcon:hover {
+  background: #fff;
+  color: #1d1b31;
+  border-radius: 12px;
+}
+
+.sidebar ul li .nav {
+  text-decoration: none;
+}
+
+.sidebar .profile_content {
+  position: absolute;
+  color: #fff;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.sidebar .profile_content .profile {
+  position: relative;
+  padding-top: 10px;
+  height: 100px;
+  background: none;
+  transition: all 0.5s ease;
+}
+
+.sidebar.active .profile_content .profile {
+  background: #1d1b31;
+}
+
+/* fefefefefef */
+.profile_content .profile .profile_details {
   display: flex;
   align-items: center;
-  border-radius: 5px;
-  height: 40px;
-  color: gray;
-  background-color: #eef3f8;
-  margin-right: 10px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
-.header__search > input {
-  outline: none;
-  border: none;
-  background: none;
+.sidebar.active .profile .profile_details {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.header__right {
+.profile .profile_details .name_email {
+  margin-left: 10px;
+  text-align: start;
+}
+
+.profile .profile_details .name {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.profile .profile_details .name_email {
+  font-size: 13px;
+}
+
+.profile .logoutWrapper {
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 5px;
 }
 
-.header__right ul {
-  margin: 0 3rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
+.profile .logoutWrapper:hover {
+  color: crimson;
+}
+
+.profile .logoutWrapper span {
+  padding-right: 8px;
 }

@@ -16,7 +16,7 @@ class Portfolio extends React.Component {
     this.state = {
       open: false,
       url: "",
-      title: ""
+      title: "",
     };
     this.closeModal = this.closeModal.bind(this);
   }

@@ -1,0 +1,19 @@
+.home_content {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
+  transition: all 0.5s ease;
+}
+
+.home_content .home {
+  font-size: 25px;
+  font-weight: 500;
+  color: #fff;
+  margin: 12px;
+}
+
+.toggled {
+  width: calc(100% - 240px);
+  left: 240px;
+}
