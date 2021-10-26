@@ -100,12 +100,12 @@ function App() {
           </BrowserRouter>
         ) : (
           <>
-            {/* <div className="intro" ref={introRef}>
+            <div className="intro" ref={introRef}>
               <h1 className="text">
 
                 <span className="subText" ref={firstSpanRef}>Welcome,</span>{' '}<span className="subText" ref={secondSpanRef}>{userName}</span>
               </h1>
-            </div> */}
+            </div>
 
             <BrowserRouter>
               <Header isToggled={isToggled} toggleSidebar={toggleSidebar}/>
