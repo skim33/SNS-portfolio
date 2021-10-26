@@ -36,6 +36,7 @@ class Portfolio extends React.Component {
 
   componentWillUnmount() {
     this.$el.extremes("destroy");
+    console.log("page unmounted")
   }
 
   render() {

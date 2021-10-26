@@ -87,19 +87,6 @@ function App() {
     setIsToggled(!isToggled);
   }
 
-  const DefaultContainer = () => (
-    <>
-      <Header isToggled={isToggled} toggleSidebar={toggleSidebar}/>
-      <Route path="/home">
-        <Home isToggled={isToggled}/>
-      </Route>
-      <Route path="/portfolio" component={Portfolio}>
-      </Route>
-      <Route path="/profile" component={UserProfile} />
-      <Route path="/messaging" component={MessagingIndex} />
-    </>
- )
-
   return (
     <ThemeProvider theme = {theme}>
       <div className="app">
@@ -121,9 +108,13 @@ function App() {
             </div> */}
 
             <BrowserRouter>
-              <Switch>
-                <Route component={DefaultContainer}/>
-              </Switch>
+              <Header isToggled={isToggled} toggleSidebar={toggleSidebar}/>
+              <Route path="/home">
+                <Home isToggled={isToggled}/>
+              </Route>
+              <Route path="/portfolio" component={Portfolio} />
+              <Route path="/profile" component={UserProfile} />
+              <Route path="/messaging" component={MessagingIndex} />
             </BrowserRouter>
           </>
         )}

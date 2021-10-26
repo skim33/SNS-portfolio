@@ -49,18 +49,18 @@ const Header = ({isToggled, toggleSidebar}) => {
   }, [isToggled]);
 
   return (
-    <div className="sidebar" ref={sidebarRef}>
+    <div className="sidebar" ref={sidebarRef} onMouseEnter={toggleSidebar} onMouseLeave={toggleSidebar}>
       <div className="logo_content">
         <div className="logo">
           <CodeIcon className="codeIcon"/>
           <div className="logo_name">Shawn Kim</div>
         </div>
 
-        <MenuIcon className="btn" onClick={(e) => {toggleSidebar(e)}}/>
+        <MenuIcon className="btn"/>
       </div>
       <ul>
         <li style={{display: 'flex', alignItems: 'center'}}>
-          <SearchIcon className="searchIcon" onClick={(e) => {toggleSidebar(e)}}/>
+          <SearchIcon className="searchIcon"/>
           <input type="text" placeholder="Search..."/>
         </li>
         <li>
