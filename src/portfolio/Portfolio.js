@@ -39,8 +39,9 @@ class Portfolio extends React.Component {
   }
 
   render() {
+    console.log(this.props.isToggled);
     return (
-      <div className="home__body">
+      <div className={`home__body ${this.props.isToggled && 'toggled'}`}>
         <div className="icon"><PortFolioIcon /></div>
         <ul ref={el => this.el = el} className="popIn">
           <Tooltip 
@@ -111,7 +112,7 @@ class Portfolio extends React.Component {
           <li><a className="link" href="http://shawn-kim-website.herokuapp.com">Coming soon...</a></li>
         </ul>
         
-        <PortfolioPopUp open={this.state.open} onClose={this.closeModal} url={this.state.url} title={this.state.title} />
+        <PortfolioPopUp open={this.state.open} onClose={this.closeModal} url={this.state.url} title={this.state.title} isToggled={this.props.isToggled} />
       </div>
     
     )

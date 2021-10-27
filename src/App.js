@@ -112,7 +112,9 @@ function App() {
               <Route path="/home">
                 <Home isToggled={isToggled}/>
               </Route>
-              <Route path="/portfolio" component={Portfolio} />
+              <Route path="/portfolio">
+                <Portfolio isToggled={isToggled} />
+              </Route>
               <Route path="/profile" component={UserProfile} />
               <Route path="/messaging" component={MessagingIndex} />
             </BrowserRouter>

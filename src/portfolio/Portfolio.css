@@ -141,3 +141,8 @@ ul {
   animation-fill-mode: forwards;
   opacity: 0;
 }
+
+.toggled {
+  width: calc(100% - 240px);
+  left: 240px;
+}
