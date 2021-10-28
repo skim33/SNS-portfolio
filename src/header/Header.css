@@ -74,11 +74,12 @@
   position: absolute;
   left: 122px;
   top: 0;
-  transform: translate(-55%, -50%);
+  transform: translate(-50%, -50%);
   border-radius: 6px;
   height: 35px;
   width: 122px;
-  background: none;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   line-height: 35px;
   text-align: center;
   transition: 0s;
@@ -167,9 +168,13 @@
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear 0.2s;
 }
 
 .sidebar_menu.active .profile .profile_details {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
@@ -191,16 +196,32 @@
 .profile .logoutWrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   cursor: pointer;
   margin-right: 5px;
   margin-top: 5px;
 }
 
-.profile .logoutWrapper:hover {
-  color: crimson;
+.sidebar_menu.active .profile .logoutWrapper {
+  justify-content: end;
 }
 
-.profile .logoutWrapper span {
+.profile .logoutWrapper:hover {
+  background: #fff;
+  color: #11101d;
+}
+
+.sidebar_menu .profile .logoutWrapper span {
+  display: none;
+}
+
+.sidebar_menu.active .profile .logoutWrapper span {
+  display: block;
   padding-right: 8px;
+  font-size: 15px;
+}
+
+.sidebar_menu .profile .logoutWrapper .log_out {
+  height: 30px;
+  width: 30px;
 }

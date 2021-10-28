@@ -1,13 +1,12 @@
 .headerOption {
-  width: 200px;
   display: flex;
   align-items: center;
   color: #fff;
   cursor: pointer;
-  transition: all 0.5s ease;
   border-radius: 12px;
   white-space: nowrap;
   padding-left: 7px;
+  transition: all 0.5s ease;
 }
 
 .headerOption:hover {
@@ -19,9 +18,19 @@
   font-size: 18px;
   font-weight: 400;
   margin-left: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear 0.2s;
 }
 
 .headerOption__icon {
   height: 50px !important;
   max-width: 50px !important;
+}
+
+.headerOption.toggled,
+.headerOption__title.toggled {
+  visibility: visible;
+  opacity: 1;
+  width: 200px;
 }
