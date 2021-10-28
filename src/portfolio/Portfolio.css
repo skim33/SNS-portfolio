@@ -1,10 +1,12 @@
 .home__body {
   position: absolute;
-  width: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
   background-color: #2a2f3c;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-60%);
+  transition: all 0.5s ease;
 }
 
 ul {

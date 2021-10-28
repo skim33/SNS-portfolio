@@ -6,9 +6,9 @@ import Widgets from './Widgets'
 
 import './MessagingIndex.css'
 
-function MessagingIndex() {
+const MessagingIndex = ({ isToggled }) => {
   return (
-    <div className="messageIndex__body">
+    <div className={`messageIndex__body ${isToggled && 'toggled'}`}>
       <Sidebar />
       <Feed />
       <Widgets />

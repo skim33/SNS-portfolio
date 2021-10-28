@@ -1,7 +1,17 @@
 .messageIndex__body {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
   display: flex;
   margin-top: 35px;
   max-width: 1200px;
   margin-left: 20px;
   margin-right: 20px;
+  transition: all 0.5s ease;
+}
+
+.toggled {
+  width: calc(100% - 240px);
+  left: 240px;
 }

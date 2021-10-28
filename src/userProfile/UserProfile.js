@@ -14,7 +14,7 @@ import ImageTwo from '../assets/locked.jpg'
 
 export const profileUnsubscribers = [];
 
-const UserProfile = () => {
+const UserProfile = ({ isToggled }) => {
   const userEmail = useSelector(selectEmail);
   const userDisplayName = useSelector(selectDisplayName);
   const userProfileURL = useSelector(selectProfileURL);
@@ -88,7 +88,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="wrapper">
+    <div className={`wrapper ${isToggled && 'toggled'}`}>
       <section className={isActive ? 'active' : ''}>
         <Icon />
         <div className={isActive ? 'container active' : 'container'}>

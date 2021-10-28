@@ -49,7 +49,7 @@ const Header = ({isToggled, toggleSidebar}) => {
   }, [isToggled]);
 
   return (
-    <div className="sidebar" ref={sidebarRef}>
+    <div className="sidebar_menu" ref={sidebarRef}>
       <div className="logo_content">
         <div className="logo">
           <CodeIcon className="codeIcon"/>

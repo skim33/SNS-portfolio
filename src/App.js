@@ -115,8 +115,12 @@ function App() {
               <Route path="/portfolio">
                 <Portfolio isToggled={isToggled} />
               </Route>
-              <Route path="/profile" component={UserProfile} />
-              <Route path="/messaging" component={MessagingIndex} />
+              <Route path="/profile">
+                <UserProfile isToggled={isToggled}/>
+              </Route>
+              <Route path="/messaging">
+                <MessagingIndex isToggled={isToggled} />
+              </Route>
             </BrowserRouter>
           </>
         )}

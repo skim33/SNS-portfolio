@@ -1,7 +1,11 @@
 .wrapper {
-  width: 100%;
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
   margin: 0;
   padding: 0;
+  transition: all 0.5s ease;
 }
 
 section {
@@ -226,4 +230,9 @@ section .container.active .editBx .imgBx {
   section .container.active .infoBx .displayBx {
     top: -100%;
   }
+}
+
+.toggled {
+  width: calc(100% - 240px);
+  left: 240px;
 }
