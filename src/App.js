@@ -108,6 +108,7 @@ function App() {
             </div>
 
             <BrowserRouter>
+              <Redirect to="/home" />
               <Header isToggled={isToggled} toggleSidebar={toggleSidebar}/>
               <Route path="/home">
                 <Home isToggled={isToggled}/>

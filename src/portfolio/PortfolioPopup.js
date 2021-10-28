@@ -7,11 +7,29 @@ import './PortfolioPopup.css'
 const PortfolioPopUp = ({open, onClose, url, title, isToggled}) => {
   return (
     <Popup open={open} closeOnDocumentClick onClose={onClose}>
+      <button className="close" onClick={onClose}>
+        &times;
+      </button>
+
       <div className={`modal ${isToggled && 'toggled'}`}>
-        <button className="close" onClick={onClose}>
-          &times;
-        </button>
-        <iframe title={title} src={url} className={isToggled && 'toggled'}></iframe>
+
+        <iframe title={title} src={url}></iframe>
+        
+        <div>
+          <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
+        </div>
       </div>
     </Popup>
   )
