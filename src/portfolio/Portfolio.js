@@ -39,7 +39,6 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    console.log(this.props.isToggled);
     return (
       <div className={`home__body ${this.props.isToggled && 'toggled'}`}>
         <div className="icon"><PortFolioIcon /></div>

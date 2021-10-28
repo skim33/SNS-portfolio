@@ -16,12 +16,12 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import BusinessCenterIcon  from '@material-ui/icons/BusinessCenter'
 import ChatIcon  from '@material-ui/icons/Chat'
 import NotificationsIcon  from '@material-ui/icons/Notifications'
-import CodeIcon from '@material-ui/icons/Code';
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
 
 import './Header.css'
+import logoImage from '../assets/logo_login.png'
 
 const Header = ({isToggled, toggleSidebar}) => {
   const dispatch = useDispatch();
@@ -52,8 +52,7 @@ const Header = ({isToggled, toggleSidebar}) => {
     <div className="sidebar_menu" ref={sidebarRef}>
       <div className="logo_content">
         <div className="logo">
-          <CodeIcon className="codeIcon"/>
-          <div className="logo_name">Shawn Kim</div>
+          <img src={logoImage} alt="" />
         </div>
 
         <MenuIcon className="btn" onClick={toggleSidebar}/>
