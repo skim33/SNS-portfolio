@@ -8,7 +8,7 @@ const PortfolioPopUp = ({open, onClose, url, title, isToggled}) => {
   return (
     <Popup open={open} closeOnDocumentClick onClose={onClose}>
       <button className="close" onClick={onClose}>
-        &times;
+        Close
       </button>
 
       <div className={`modal ${isToggled && 'toggled'}`}>
