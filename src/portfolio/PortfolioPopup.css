@@ -65,8 +65,52 @@
   width: 80vw;
   height: 100vh;
   background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .modal.toggled {
   margin-left: 240px;
+}
+
+.detail_container {
+  width: 80vw;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail_container h2 {
+  margin: 20px;
+}
+
+.detail_container h3 {
+  margin: 15px 0;
+}
+
+.detail_container p {
+  margin: 10px 0;
+}
+
+.detail_container .test_container {
+  width: 52vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail_container .test_text {
+  margin: 0 10px 10px 10px;
+}
+
+.detail_container .test_info {
+  margin: 5px;
+}
+
+.detail_container ul {
+  width: 100%;
+  list-style-type: circle;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

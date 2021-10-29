@@ -24,22 +24,32 @@ const PortfolioPopUp = ({open, onClose, url, title, details, isToggled}) => {
             <>
               <h3>Test</h3>
 
-              { details.test.map((info, ind) => (
-                  <div key={ind}>{info}</div>
-                )) }
+              <div className="test_container">
+                <div className="test_text">{details.test_text}</div>
+
+                <div className="test">
+                  { details.test.map((info, ind) => (
+                    <div className="test_info" key={ind}>{info}</div>
+                  ))}
+                </div>
+              </div>
             </>
           )}
 
           { details.skills && (
             <>
               <h3>Skills</h3>
-              {details.skills.frontend && <div>Frontend: <span>{details.skills.frontend}</span></div>}
-              {details.skills.backend && <div>Backend: <span>{details.skills.backend}</span></div>}
-              {details.skills.framework && <div>Framework: <span>{details.skills.framework}</span></div>}
-              {details.skills.library && <div><span>Library: {details.skills.library}</span></div>}
-              {details.skills.utility && <div><span>Utility: {details.skills.utility}</span></div>}
-              {details.skills.platform && <div><span>Platform: {details.skills.platform}</span></div>}
-              {details.skills.host && <div><span>Host: {details.skills.host}</span></div>}
+              <ul>
+                <div>
+                  {details.skills.frontend && <li className="skill"><span>Frontend: </span>{details.skills.frontend}</li>}
+                  {details.skills.backend && <li className="skill"><span>Backend: </span>{details.skills.backend}</li>}
+                  {details.skills.framework && <li className="skill"><span>Framework: </span>{details.skills.framework}</li>}
+                  {details.skills.library && <li className="skill"><span>Library: </span>{details.skills.library}</li>}
+                  {details.skills.utility && <li className="skill"><span>Utility: </span>{details.skills.utility}</li>}
+                  {details.skills.platform && <li className="skill"><span>Platform: </span>{details.skills.platform}</li>}
+                  {details.skills.host && <li className="skill"><span>Host: </span>{details.skills.host}</li>}
+                </div>
+              </ul>
             </>
           )}
           <h3>Domain</h3>

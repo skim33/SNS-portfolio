@@ -56,14 +56,14 @@ export const portfolioDetails = [
     },
     'domain': 'https://shawn-kim-ecommerce.netlify.app/',
     'github': 'https://github.com/skim33/E-commerce',
-    'text': 'A fully functional e-commerce website built with commerce.js.',
+    'text': 'A fully functional e-commerce website built with commerce.js',
     'test': [
-      'Please use the following information of test gateway to visualize scenarios such as payment success:', 
-      'Credit card number: 4242 4242 4242 4242', 
-      'Expiration date: 04/24',
-      'CVC: 242',
-      'ZIP: 42424'
-    ]
+      '- Credit card number: 4242 4242 4242 4242', 
+      '- Expiration date: 04/24',
+      '- CVC: 242',
+      '- ZIP: 42424'
+    ],
+    'test_text': 'Please use the following information of test gateway to visualize scenarios such as payment success:'
   },
   {
     'name': 'Chat',
