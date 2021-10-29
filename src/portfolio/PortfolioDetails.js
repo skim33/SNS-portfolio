@@ -2,24 +2,24 @@ export const portfolioDetails = [
   {
     'name': 'Vanilla JS Website',
     'skills': {
-      'front-end': ["HTML / CSS", "JavaScript"], 
+      'frontend': "HTML / CSS, JavaScript", 
       'backend': 'Node.js (Cross-platform Runtime Environment)', 
       'framework': 'Express.js',
-      'library': ['jQuery', 'Three.js', 'anime.js'],
+      'library': 'jQuery, Three.js, anime.js',
       'utility': '',
       'platform': '',
       'host': 'Heroku',
     },
     'domain': 'https://shawn-kim-website.herokuapp.com/',
-    'text': 'A simple mobile responsive Vanilla JS website to learn and practice web development.',
+    'text': 'A simple mobile responsive Vanilla JS website to learn and practice web development',
   },
   {
     'name': 'React-Chess',
     'skills': {
-      'front-end': 'React',
+      'frontend': 'React',
       'backend': '',
       'framework': '',
-      'library': ['Chess.js', 'RxJs'],
+      'library': 'Chess.js, RxJs',
       'utility': 'React DnD',
       'platform': '',
       'host': 'Firebase',
@@ -31,7 +31,7 @@ export const portfolioDetails = [
   {
     'name': 'Typical Cafe Website',
     'skills': {
-      'front-end': 'React', 
+      'frontend': 'React', 
       'backend': '',
       'framework': 'styled-components',
       'library': '',
@@ -46,7 +46,7 @@ export const portfolioDetails = [
   {
     'name': 'E-Commerce Website',
     'skills': {
-      'front-end': 'React', 
+      'frontend': 'React', 
       'backend': 'Commerce.js',
       'framework': '',
       'library': '',
@@ -56,12 +56,19 @@ export const portfolioDetails = [
     },
     'domain': 'https://shawn-kim-ecommerce.netlify.app/',
     'github': 'https://github.com/skim33/E-commerce',
-    'text': ['A fully functional e-commerce website built with commerce.js.', 'Please use the following information of test gateway to visualize scenarios such as payment success:', 'Credit card number: 4242 4242 4242 4242', 'Expiration date: 04/24', 'CVC: 242', 'ZIP: 42424'],
+    'text': 'A fully functional e-commerce website built with commerce.js.',
+    'test': [
+      'Please use the following information of test gateway to visualize scenarios such as payment success:', 
+      'Credit card number: 4242 4242 4242 4242', 
+      'Expiration date: 04/24',
+      'CVC: 242',
+      'ZIP: 42424'
+    ]
   },
   {
     'name': 'Chat',
     'skills': {
-      'front-end': 'React', 
+      'frontend': 'React', 
       'backend': '',
       'framework': 'React Chat Engine',
       'library': 'Axios',
@@ -76,16 +83,16 @@ export const portfolioDetails = [
   {
     'name': 'Trip Advisor',
     'skills': {
-      'front-end': 'React', 
+      'frontend': 'React', 
       'backend': '',
       'framework': '',
       'library': 'Google Map React ',
-      'utility': ['Rapid API', 'Material UI'],
+      'utility': 'Rapid API, Material UI',
       'platform': '',
       'Host': 'Netlify'
     },
     'domain': 'https://travel-advisor-api.netlify.app/',
     'github': 'https://github.com/skim33/Travel-Advisor',
-    'text': 'Geolocation, Google Maps API & Google Places API, fetching API data based on the location, data filtering are features to form a reasonable Travel Advisor App.',
+    'text': 'Geolocation, Google Maps API & Google Places API, fetching API data based on the location, data filtering are features to form a reasonable Travel Advisor App',
   },
 ]
