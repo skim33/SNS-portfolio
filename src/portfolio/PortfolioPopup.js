@@ -4,7 +4,8 @@ import Popup from 'reactjs-popup'
 
 import './PortfolioPopup.css'
 
-const PortfolioPopUp = ({open, onClose, url, title, isToggled}) => {
+const PortfolioPopUp = ({open, onClose, url, title, details, isToggled}) => {
+  console.log(details)
   return (
     <Popup open={open} closeOnDocumentClick onClose={onClose}>
       <button className="close" onClick={onClose}>
@@ -16,7 +17,7 @@ const PortfolioPopUp = ({open, onClose, url, title, isToggled}) => {
         <iframe title={title} src={url}></iframe>
         
         <div>
-          <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
+          <div>AAAAAAAAAAAAAAAA</div>
           <div>AAAAAAAAAAAAAAAA</div>
           <div>AAAAAAAAAAAAAAAA</div>
           <div>AAAAAAAAAAAAAAAA</div>
