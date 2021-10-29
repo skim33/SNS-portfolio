@@ -14,7 +14,7 @@ export const portfolioDetails = [
     'text': 'A simple mobile responsive Vanilla JS website to learn and practice web development',
   },
   {
-    'name': 'React-Chess',
+    'name': 'React Chess',
     'skills': {
       'frontend': 'React',
       'backend': '',
