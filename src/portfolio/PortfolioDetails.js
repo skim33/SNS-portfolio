@@ -79,6 +79,11 @@ export const portfolioDetails = [
     'domain': 'https://shawn-kim-chat-app.netlify.app',
     'github': '',
     'text': 'A simple react chat app built with Serverless Chat API',
+    'test': [
+      '- User ID: Shawn', 
+      '- Password: 123123',
+    ],
+    'test_text': 'Please use the following information to log in:'
   },
   {
     'name': 'Trip Advisor',
