@@ -34,52 +34,49 @@ function App() {
   const secondSpanRef = useRef(null);
 
   useEffect(() => {
-    return new Promise((resolve, reject) => {
-      const unsubscribe = auth.onAuthStateChanged(userAuth => {
-        unsubscribe();
-        if (userAuth) {
-          // user is logged in
-          resolve(dispatch(login({
-            email: userAuth.email,
-            uid: userAuth.uid,
-            displayName: userAuth.displayName,
-            photoUrl: userAuth.photoURL
-          })
-
-        ))} else {
-          // user is logged out
-          resolve(dispatch(logout()));
-        }
-      }, reject);
-
-      if (introRef.current !== null && firstSpanRef !== null && secondSpanRef !== null) {
-        setTimeout(() => {
-          setTimeout(() => {
-            firstSpanRef.current.classList.add('active');
-          }, 400);
-  
-          setTimeout(() => {
-            secondSpanRef.current.classList.add('active');
-          }, 800);
-  
-          setTimeout(() => {
-            setTimeout(() => {
-              firstSpanRef.current.classList.remove('active');
-              firstSpanRef.current.classList.add('fade');
-            }, 50);
-  
-            setTimeout(() => {
-              secondSpanRef.current.classList.remove('active');
-              secondSpanRef.current.classList.add('fade');
-            }, 100);
-          }, 2000);
-  
-          setTimeout(() => {
-            introRef.current.style.top = '-100vh';
-          }, 2300);
+    auth.onAuthStateChanged(userAuth => {
+      if (userAuth) {
+        // user is logged in
+        dispatch(login({
+          email: userAuth.email,
+          uid: userAuth.uid,
+          displayName: userAuth.displayName,
+          photoUrl: userAuth.photoURL
         })
+
+      )} else {
+        // user is logged out
+        dispatch(logout());
       }
     });
+
+    if (introRef.current && firstSpanRef.current && secondSpanRef.current) {
+      setTimeout(() => {
+        setTimeout(() => {
+          firstSpanRef.current.classList.add('active');
+        }, 400);
+
+        setTimeout(() => {
+          secondSpanRef.current.classList.add('active');
+        }, 800);
+
+        setTimeout(() => {
+          setTimeout(() => {
+            firstSpanRef.current.classList.remove('active');
+            firstSpanRef.current.classList.add('fade');
+          }, 50);
+
+          setTimeout(() => {
+            secondSpanRef.current.classList.remove('active');
+            secondSpanRef.current.classList.add('fade');
+          }, 100);
+        }, 2000);
+
+        setTimeout(() => {
+          introRef.current.style.top = '-100vh';
+        }, 2300);
+      })
+    };
   });
 
   const toggleSidebar = (e) => {
