@@ -8,11 +8,14 @@ import './MessagingIndex.css'
 
 const MessagingIndex = ({ isToggled }) => {
   return (
-    <div className={`messageIndex__body ${isToggled && 'toggled'}`}>
-      <Sidebar />
-      <Feed />
-      <Widgets />
+    <div className={`messageIndex__wrapper ${isToggled && 'toggled'}`}>
+      <div className='messageIndex__body'>
+        <Sidebar />
+        <Feed />
+        <Widgets />
+      </div>
     </div>
+    
   )
 }
 
