@@ -18,6 +18,7 @@
   height: 100vh;
   background-color: #161616;
   transition: 1s;
+  overflow: hidden;
 }
 
 .text {
