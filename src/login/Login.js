@@ -6,7 +6,8 @@ import { useDispatch } from 'react-redux'
 import { login } from '../features/userSlice'
 
 import './Login.css'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo_login.png'
+import logoTwo from '../assets/logo.png'
 
 function Login() {
   const [isGuest, setIsGuest] = useState(true);
@@ -78,7 +79,7 @@ function Login() {
               &times;
           </span>
           
-          <img src={logo} alt="logo"/>
+          <img src={logoTwo} alt="logo"/>
 
           <div className="guest_text">
             <div>사이트에 방문해주셔서 감사합니다!</div>
