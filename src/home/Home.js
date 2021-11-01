@@ -61,7 +61,7 @@ const Home = ({ isToggled }) => {
                 <span style={{ fontSize: "3em" }}>Other than this,</span>
                 <br />
                 <span style={{ fontSize: "3em" }}>
-                  a list of my personal projects is listed in 「Portfolio」 :
+                  a list of my personal projects is available in 「Portfolio」 :
                 </span>
                 <div style={{marginTop: '3em', textAlign: 'center'}}>
                   <Blink color='#fff' text='↓Click↓' fontSize='1' />

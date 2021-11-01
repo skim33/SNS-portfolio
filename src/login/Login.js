@@ -6,11 +6,12 @@ import { useDispatch } from 'react-redux'
 import { login } from '../features/userSlice'
 
 import './Login.css'
-import logo from '../assets/logo_login.png'
+import logo from '../assets/logo.png'
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [isGuest, setIsGuest] = useState(true);
+  const [email, setEmail] = useState("guest@guest.com");
+  const [password, setPassword] = useState("123123");
   const [name, setName] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [error, setError] = useState("");
@@ -66,21 +67,64 @@ function Login() {
   }  
 
   return (
-    <div className="login">
-      <img src={logo} alt="logo"/>
-      {error && <div className="alert" style={{display: alertBox}}><span className="closebtn" onClick={closeAlert}>&times;</span>{error}</div>}
-      <form onClick={loginToApp}>
-        <input onChange={(e) => setName(e.target.value)} placeholder="Full name" type="text"/>
-        <input onChange={(e) => setProfilePic(e.target.value)} placeholder="Profile Pic URL (optional)" type="text"/>
-        <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email"/>
-        <input onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password"/>
-        <button type="submit">Sign In</button>
-      </form>
+    <>
+      {isGuest && (
+        <div className="guestLogin">
+          <span className="guestCloseBtn" onClick={() => {
+            setIsGuest(!isGuest);
+            setEmail("");
+            setPassword("");
+          }}>
+              &times;
+          </span>
+          
+          <img src={logo} alt="logo"/>
 
-      <p>Not a member?{" "}
-        <span className="login__register" onClick={register}>Register Now</span>
-      </p>
-    </div>
+          <div className="guest_text">
+            <div>사이트에 방문해주셔서 감사합니다!</div>
+            <div>현재 진행중인 개인 프로젝트임으로 React, Redux, Firebase를 사용해 SNS형 웹 애플리케이션을 구축하고 있습니다.</div>
+            <div>제 개인 포트폴리오는 게스트 로그인 후 「Portfolio」를 확인 부탁드립니다.</div>
+          </div>
+
+          <div className="guest_info">
+            <div>Email: guest@guest.com</div>
+            <div>Password: 123123</div>
+          </div>
+
+          <button type="button" className="button bouncy" onClick={(e) => {
+            loginToApp(e);
+          }}>
+            Guest Login
+          </button>
+
+          <p>Already have an account?{" "}
+            <span className="guestToUser" onClick={() => {
+              setIsGuest(!isGuest);
+              setEmail("");
+              setPassword("");
+            }}>
+                Login
+            </span>
+          </p>
+        </div>
+      )}    
+
+      <div className="login">
+        <img src={logo} alt="logo"/>
+        {error && <div className="alert" style={{display: alertBox}}><span className="closebtn" onClick={closeAlert}>&times;</span>{error}</div>}
+        <form onClick={loginToApp}>
+          <input onChange={(e) => setName(e.target.value)} placeholder="Full name" type="text"/>
+          <input onChange={(e) => setProfilePic(e.target.value)} placeholder="Profile Pic URL (optional)" type="text"/>
+          <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email"/>
+          <input onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password"/>
+          <button type="submit">Sign In</button>
+        </form>
+
+        <p>Not a member?{" "}
+          <span className="login__register" onClick={register}>Register Now</span>
+        </p>
+      </div>
+    </>
   )
 }
 
