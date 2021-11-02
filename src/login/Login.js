@@ -82,7 +82,7 @@ function Login() {
           <img src={logoTwo} alt="logo"/>
 
           <div className="guest_text">
-            <div>사이트에 방문해주셔서 감사합니다!</div>
+            <div>방문해주셔서 감사합니다!</div>
             <div>현재 진행중인 개인 프로젝트임으로 React, Redux, Firebase를 사용해 SNS형 웹 애플리케이션을 구축하고 있습니다.</div>
             <div>제 개인 포트폴리오는 게스트 로그인 후 「Portfolio」를 확인 부탁드립니다.</div>
           </div>
