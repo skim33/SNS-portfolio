@@ -13,7 +13,7 @@
     <a href="https://github.com/skim33/SNS-portfolio"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://shawn-kim-portfolio.web.app/messaging">View Demo</a>
+    <a href="https://shawn-kim-portfolio.web.app/">View Demo</a>
     <br />
     <div align="center">Please logn with the guest email address and password shown below:</div>
     <br />
@@ -42,7 +42,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://shawn-kim-portfolio.web.app/messaging)
+[![Product Name Screen Shot][product-screenshot]](https://shawn-kim-portfolio.web.app/)
 
 One of the most used features of SNS used nowadays is realtime interaction between users. This social networking web app is built with the React Framework for frontend, and Firebase backend services, which allows users to add posts on the feed with "Like" and "Share" functionality.
 
