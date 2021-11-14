@@ -30,7 +30,7 @@ export const userSlice = createSlice({
       state.profileURL = null;
     }
   }
-}); 
+});
 
 export const { login, logout } = userSlice.actions;
 
