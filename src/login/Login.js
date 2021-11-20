@@ -11,6 +11,7 @@ import logoTwo from '../assets/logo.png'
 
 function Login() {
   const [isGuest, setIsGuest] = useState(true);
+  const [isMember, setIsMember] = useState(true);
   const [email, setEmail] = useState("guest@guest.com");
   const [password, setPassword] = useState("123123");
   const [name, setName] = useState("");
@@ -38,10 +39,13 @@ function Login() {
     setLoginAttempt(true);
   };
 
-  const register = () => {
+  const register = (e) => {
+    e.preventDefault();
     if (!name) {
       return setError("Please enter a full name!");
     }
+
+    console.log(profilePic);
 
     auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
     setError("");
@@ -113,17 +117,34 @@ function Login() {
       <div className="login">
         <img src={logo} alt="logo"/>
         {error && <div className="alert" style={{display: alertBox}}><span className="closebtn" onClick={closeAlert}>&times;</span>{error}</div>}
-        <form onClick={loginToApp}>
-          <input onChange={(e) => setName(e.target.value)} placeholder="Full name" type="text"/>
-          <input onChange={(e) => setProfilePic(e.target.value)} placeholder="Profile Pic URL (optional)" type="text"/>
-          <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email"/>
-          <input onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password"/>
-          <button type="submit">Sign In</button>
-        </form>
 
-        <p>Not a member?{" "}
-          <span className="login__register" onClick={register}>Register Now</span>
-        </p>
+        {isMember ? (
+          <>
+            <form onClick={loginToApp}>
+              <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email"/>
+              <input onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password"/>
+              <button type="submit">Log In</button>
+            </form>
+
+            <p>Not a member?{" "}
+              <span className="login__register" onClick={() => {setIsMember(!isMember); setError(''); setLoginAttempt(false)}}>Register Now</span>
+            </p>
+          </>
+        ):(
+          <>
+            <form onClick={register}>
+              <input onChange={(e) => setName(e.target.value)} placeholder="Full name" type="text"/>
+              <input onChange={(e) => setProfilePic(e.target.value)} placeholder="Profile Pic URL (optional)" type="text"/>
+              <input onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email"/>
+              <input onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password"/>
+              <button type="submit">Sign Up</button>
+            </form>
+
+            <p>Have an account?{" "}
+              <span className="login__register" onClick={() => {setIsMember(!isMember); setError(''); setLoginAttempt(false)}}>Login Now</span>
+            </p>
+          </>
+        )}
       </div>
     </>
   )
